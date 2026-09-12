@@ -80,12 +80,13 @@
 | **RTL 검증** | ModelSim | KETI, On-chip BPL, 3L4W — FXP 모델과 bit-exact 대조 |
 | | Xilinx Vivado | RFSoC 구현·ILA 캡처, LEGv8 CPU RTL 시뮬레이션 |
 | **논리 합성** | Synopsys Design Compiler | KETI TRX, 2D FSM, LEGv8 CPU (Nangate 45 nm) |
-| **커스텀 회로** | Cadence Virtuoso | LC VCO · BGR · CP-PLL (28 nm), Ring VCO · Full adder (90 nm), Ring OSC (TSMC 28 nm) |
+| **커스텀 회로** | Cadence Virtuoso | LC VCO · BGR · CP-PLL (28 nm), Ring VCO (90 nm), Ring OSC (TSMC 28 nm) |
 | | Spectre ADE | transient · AC · S-parameter · PSS · pnoise · parametric sweep |
-| | HSPICE | Ring VCO, Full adder |
+| | HSPICE | Ring VCO |
 | | OrCAD PSpice | 2-stage cascode amplifier |
-| **Layout · 검증** | Cadence Virtuoso Layout | CMOS 90 nm full adder, TSMC 28 nm Ring OSC |
+| **Layout · 검증** | Cadence Virtuoso Layout | TSMC 28 nm Ring Oscillator |
 | | Siemens Calibre | DRC · LVS · PEX (TSMC 28 nm) |
+| | Microwind | CMOS 90 nm full adder — λ 기반 layout |
 | **PCB** | Altium Designer | RF up/down converter 보드 (schematic · layout · DFM/DRC) |
 | **FPGA 플랫폼** | RFSoC ZCU111 / ZCU208 | DMT TRX 실시간 검증, 2보드 칩간 통신 |
 | **측정 장비** | Keysight M8196A AWG | 14 nm DMT TRX 실칩 측정 |

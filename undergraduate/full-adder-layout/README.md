@@ -4,7 +4,7 @@
 
 Mirror style full adder를 schematic부터 layout까지 직접 그리고, transient 시뮬레이션으로 worst-case delay가 어느 입력 조합에서 나오는지 확인했습니다.
 
-**사용 도구** — Cadence Virtuoso (schematic · layout) · HSPICE
+**사용 도구** — Microwind (λ 기반 layout · 내장 아날로그 시뮬레이터)
 
 ---
 

@@ -16,7 +16,26 @@ flowchart LR
  RF -. 설정 및 캡처 .-> RX
 ```
 
-RFSoC 보드·장비의 실물 연결 사진은 아직 확인 중입니다. 아래 그림은 여러 검증 기록에서 선택했으며 RX-only, TRX와 On-chip BPL 사례를 구분합니다.
+아래 그림은 여러 검증 기록에서 선택했으며 RX-only, TRX와 On-chip BPL 사례를 구분합니다.
+
+## 측정 환경
+
+ZCU111 평가 보드에 아날로그 front-end card를 올려 4 lane을 구성했습니다. 기본 제공되는 XM500은 single-ended로 4 lane을 뚫을 수 없어 **VFE-100으로 교체**했습니다.
+
+<table>
+<tr>
+<td width="46%"><img src="figures/setup-zcu111-vfe.jpg" alt="ZCU111 with VFE-100 front-end card"></td>
+<td width="54%"><img src="figures/setup-zcu111-loopback.jpg" alt="SMA loopback wiring on VFE-100"></td>
+</tr>
+<tr>
+<td>XM500을 제거하고 VFE-100을 ZCU111에 연결한 상태.</td>
+<td>front-end card의 IN1~IN4를 OUT1~OUT4에 SMA로 연결한 loopback 배선.</td>
+</tr>
+</table>
+
+DAC 4채널은 tile 228 하나에 들어가 채널 간 정렬이 이미 보장되므로 MTS가 필요 없습니다. ADC는 tile 224/225를 쓰고 LMX2594 U102 하나에서 클럭을 받으므로, 같은 PLL을 공유하는 두 tile을 MTS로 묶었습니다.
+
+채널을 거치는 측정에서는 loopback 대신 별도 channel board를 SMA로 연결합니다.
 
 ## 1 Single tone과 ADC calibration
 

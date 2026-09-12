@@ -1,0 +1,207 @@
+﻿[
+    {
+        "file":  "setup-zcu111-vfe.jpg",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\ZCU111_4lane.pptx",
+        "slide":  4,
+        "media":  "ppt/media/image4.png",
+        "converted":  "cropped to top 85% (removes person in frame), resized to 1324x1500, JPEG q88",
+        "kind":  "lab-photo",
+        "note":  "ZCU111 with XM500 removed and VFE-100 front-end card attached. Deck dated 2026-07-27"
+    },
+    {
+        "file":  "setup-zcu111-loopback.jpg",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\ZCU111_4lane.pptx",
+        "slide":  4,
+        "media":  "ppt/media/image5.png",
+        "converted":  "resized to 1600x1200, JPEG q88",
+        "kind":  "lab-photo",
+        "note":  "SMA loopback wiring, IN1-IN4 to OUT1-OUT4 on VFE-100"
+    },
+    {
+        "file":  "rx-s17-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\RFSoC_64way_RX_SPI_강가영_발표자료.pptx",
+        "slide":  17,
+        "media":  "ppt/media/image56.png",
+        "size":  [
+                     1681,
+                     748
+                 ]
+    },
+    {
+        "file":  "rx-s19-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\RFSoC_64way_RX_SPI_강가영_발표자료.pptx",
+        "slide":  19,
+        "media":  "ppt/media/image60.png",
+        "size":  [
+                     1679,
+                     749
+                 ]
+    },
+    {
+        "file":  "keti-s3-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  3,
+        "media":  "ppt/media/image4.png",
+        "size":  [
+                     763,
+                     630
+                 ]
+    },
+    {
+        "file":  "keti-s3-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  3,
+        "media":  "ppt/media/image3.png",
+        "size":  [
+                     756,
+                     612
+                 ]
+    },
+    {
+        "file":  "keti-s4-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  4,
+        "media":  "ppt/media/image10.png",
+        "size":  [
+                     743,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s4-5.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  4,
+        "media":  "ppt/media/image8.png",
+        "size":  [
+                     763,
+                     630
+                 ]
+    },
+    {
+        "file":  "keti-s4-6.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  4,
+        "media":  "ppt/media/image7.png",
+        "size":  [
+                     752,
+                     630
+                 ]
+    },
+    {
+        "file":  "keti-s5-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  5,
+        "media":  "ppt/media/image12.png",
+        "size":  [
+                     822,
+                     626
+                 ]
+    },
+    {
+        "file":  "keti-s5-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  5,
+        "media":  "ppt/media/image11.png",
+        "size":  [
+                     745,
+                     626
+                 ]
+    },
+    {
+        "file":  "keti-s5-4.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  5,
+        "media":  "ppt/media/image13.png",
+        "size":  [
+                     740,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s16-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  16,
+        "media":  "ppt/media/image79.png",
+        "size":  [
+                     725,
+                     577
+                 ]
+    },
+    {
+        "file":  "keti-s20-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  20,
+        "media":  "ppt/media/image99.png",
+        "size":  [
+                     749,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s20-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  20,
+        "media":  "ppt/media/image98.png",
+        "size":  [
+                     749,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s21-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  21,
+        "media":  "ppt/media/image101.png",
+        "size":  [
+                     766,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s21-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  21,
+        "media":  "ppt/media/image100.png",
+        "size":  [
+                     766,
+                     595
+                 ]
+    },
+    {
+        "file":  "keti-s23-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  23,
+        "media":  "ppt/media/image106.png",
+        "size":  [
+                     767,
+                     635
+                 ]
+    },
+    {
+        "file":  "keti-s24-0.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  24,
+        "media":  "ppt/media/image109.emf",
+        "size":  [
+                     665,
+                     516
+                 ]
+    },
+    {
+        "file":  "keti-s24-1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\KETI_64way_TRX_RFSoC_강가영_발표자료.pptx",
+        "slide":  24,
+        "media":  "ppt/media/image108.emf",
+        "size":  [
+                     665,
+                     525
+                 ]
+    },
+    {
+        "file":  "scanner-32qam-low-ber.png",
+        "source":  "D:\\CASSP\\00_MATLAB\\gayoung\\On_chip_Adaptive_BPL\\DMT_TRX_64way_64tap_SL_BPL-260911_RFSoC검증완료\\FPGAFigure\\FPGA FDE out Constellation Diagram Res 8 Channel 32-QAM mv avg 256.png",
+        "reported_evm_db":  -26.01,
+        "reported_scanner_ber":  "4.67e-9",
+        "qualification":  "scanner title; direct BER counting not established"
+    }
+]

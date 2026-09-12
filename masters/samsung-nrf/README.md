@@ -231,7 +231,7 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ## 자료 출처
 
-단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`에서 가져왔습니다. OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것이며, 그림은 연구실 검증 기록에서 인용했습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.
+단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식, OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것입니다. 각 figure의 출처는 [`figure-sources.json`](figure-sources.json)에 기록했습니다.
 
 ---
 

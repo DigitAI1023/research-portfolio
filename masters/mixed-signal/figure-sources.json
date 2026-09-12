@@ -1,105 +1,105 @@
 ﻿[
     {
         "file":  "bgr-concept.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_project1_BGR_3번_gy_v4.pdf",
+        "source":  "IC689_project1_BGR_3번_gy_v4.pdf",
         "origin":  "embedded image 4",
         "kind":  "diagram",
         "note":  "BGR principle: Q1:Q2 = 1:n, VT ln n across R1"
     },
     {
         "file":  "bgr-schematic.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_project1_BGR_3번_gy_v4.pdf",
+        "source":  "IC689_project1_BGR_3번_gy_v4.pdf",
         "origin":  "embedded image 7",
         "kind":  "schematic",
         "note":  "Designed BGR: current mirror M3-M5, OP amp, Q1/Q2/Q3, R1/R2"
     },
     {
         "file":  "bgr-vref-temp.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_project1_BGR_3번_gy_v4.pdf",
+        "source":  "IC689_project1_BGR_3번_gy_v4.pdf",
         "origin":  "embedded image 11",
         "kind":  "simulation",
         "note":  "VREF vs temperature for a sweep of resistor ratio L = R2/R1"
     },
     {
         "file":  "lcvco-inductor.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 0",
         "kind":  "schematic",
         "note":  "Inductor L = 800 pH. Upscaled 2x"
     },
     {
         "file":  "lcvco-qfactor.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 1",
         "kind":  "simulation",
         "note":  "Q = Im(Z11)/Re(Z11), Q ~ 15 @ 10 GHz. Upscaled 1.4x"
     },
     {
         "file":  "lcvco-schematic.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 4",
         "kind":  "schematic",
         "note":  "NMOS cross-coupled LC VCO"
     },
     {
         "file":  "lcvco-transient.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 7",
         "kind":  "simulation",
         "note":  "Start-up and steady state, settles in ~5 ns"
     },
     {
         "file":  "lcvco-pss.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 8",
         "kind":  "simulation",
         "note":  "PSS: fundamental at 9.94225 GHz"
     },
     {
         "file":  "lcvco-phasenoise.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 11",
         "kind":  "simulation",
         "note":  "Phase noise -108.0692 dBc/Hz @ 1 MHz offset"
     },
     {
         "file":  "lcvco-tuning.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 14",
         "kind":  "simulation",
         "note":  "Coarse (SW0-SW5) + fine (VCONT 0-1.2V). 9.111 - 11.111 GHz"
     },
     {
         "file":  "lcvco-kvco.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 25",
         "kind":  "simulation",
         "note":  "KVCO vs VCONT, ~591 MHz/V at 10 GHz"
     },
     {
         "file":  "pll-r1-transient.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 37",
         "kind":  "simulation",
         "note":  "CP-PLL behavioral model, R1 sweep. ts = 9.93 / 1.38 / 1.52 us. Upscaled 1.9x"
     },
     {
         "file":  "pll-r1-bode.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 38",
         "kind":  "simulation",
         "note":  "R1 sweep bode plot. Upscaled 1.8x"
     },
     {
         "file":  "pll-icp-transient.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 39",
         "kind":  "simulation",
         "note":  "ICP sweep. ts = 3.41 / 1.38 / 1.08 us. Upscaled 1.8x"
     },
     {
         "file":  "pll-icp-bode.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\001_강의자료\\Mixed-Signal\\IC689_Project_Final_202528001_강가영.pdf",
+        "source":  "IC689_Project_Final_강가영.pdf",
         "origin":  "embedded image 40",
         "kind":  "simulation",
         "note":  "ICP sweep bode plot. Upscaled 1.8x"

@@ -1,7 +1,7 @@
 ﻿[
     {
         "file":  "formality.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  20,
         "kind":  "report",
         "tool":  "Synopsys Formality",
@@ -9,7 +9,7 @@
     },
     {
         "file":  "floorplan.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  33,
         "kind":  "layout",
         "tool":  "Synopsys IC Compiler",
@@ -17,7 +17,7 @@
     },
     {
         "file":  "placement.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  33,
         "kind":  "layout",
         "tool":  "Synopsys IC Compiler",
@@ -25,7 +25,7 @@
     },
     {
         "file":  "powerplan.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  36,
         "kind":  "layout",
         "tool":  "Synopsys IC Compiler",
@@ -33,7 +33,7 @@
     },
     {
         "file":  "congestion.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  37,
         "kind":  "report",
         "tool":  "Synopsys IC Compiler",
@@ -41,7 +41,7 @@
     },
     {
         "file":  "route.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  33,
         "kind":  "layout",
         "tool":  "Synopsys IC Compiler",
@@ -49,7 +49,7 @@
     },
     {
         "file":  "route-timing.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  40,
         "kind":  "report",
         "tool":  "Synopsys IC Compiler",
@@ -57,7 +57,7 @@
     },
     {
         "file":  "lvs-clean.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  42,
         "kind":  "report",
         "tool":  "Synopsys IC Compiler",
@@ -65,7 +65,7 @@
     },
     {
         "file":  "sta-violation.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  47,
         "kind":  "report",
         "tool":  "Synopsys PrimeTime",
@@ -73,7 +73,7 @@
     },
     {
         "file":  "layout-merged.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  71,
         "kind":  "layout",
         "tool":  "Cadence Virtuoso",
@@ -81,7 +81,7 @@
     },
     {
         "file":  "postsim-error.png",
-        "source":  "D:\\CASSP\\04_presentations\\강가영\\28nm_PnR_강가영_발표자료.pptx",
+        "source":  "28nm_PnR_강가영_발표자료.pptx",
         "slide":  67,
         "kind":  "simulation",
         "tool":  "ModelSim",

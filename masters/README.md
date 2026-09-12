@@ -8,13 +8,16 @@ DGIST CASSP Lab. 고속 유선 통신 DSP의 알고리즘 설계부터 RTL 구�
 | [On-chip Adaptive Bit/Power Loading](adaptive-bpl/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
 | [광대역 칩간 인터페이스](samsung-nrf/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
 | [RFSoC 하드웨어 검증](rfsoc/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
+| [28 nm Back-end Flow 실습](pnr-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
 | [Mixed-Signal 회로 설계](mixed-signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
 
 ---
 
 ## 흐름
 
-**DMT 송수신기** — KETI 과제에서 14 nm FinFET DMT TRX를 설계해 tape-out하고 실측까지 마쳤습니다. 여기서 쓴 bit/power loading은 호스트 PC가 계산해 SPI로 써 넣는 방식이었습니다.
+**DMT 송수신기** — KETI 과제에서 DMT TRX의 **TX/RX DSP를 맡아** 설계하고, 삼성 14 nm FinFET으로 tape-out해 실측까지 마쳤습니다. 여기서 쓴 bit/power loading은 호스트 PC가 계산해 SPI로 써 넣는 방식이었습니다.
+
+**Back-end** — KETI 칩의 PnR은 외주였습니다. 업체와 제대로 협의하려면 흐름을 알아야 해서, 32-tap FFT를 예제로 **DC 합성부터 PnR·sign-off까지 TSMC 28 nm에서 직접 돌려봤습니다.**
 
 **칩 안으로** — 졸업연구에서는 이 로딩 연산을 칩 내부 폐루프로 옮겼습니다. RX가 파일럿으로 부채널 오차를 측정하고, 같은 다이의 엔진이 나눗셈·로그 없이 정수 연산만으로 비트와 전력을 결정해 TX에 직접 씁니다.
 

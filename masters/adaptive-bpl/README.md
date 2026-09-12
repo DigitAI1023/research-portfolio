@@ -2,9 +2,9 @@
 
 DMT 유선 송수신기의 bit/power loading을 호스트 PC에서 칩 안으로 옮긴 석사 졸업연구입니다. RX가 파일럿으로 부채널 오차를 측정하고, 같은 다이의 로딩 엔진이 비트와 전력을 계산해 TX CONFMEM에 직접 씁니다. SPI 왕복과 PC 연산이 링크업 경로에서 빠집니다.
 
-MATLAB 고정소수점 시뮬레이터 → RTL → RFSoC ZCU111 실시간 검증까지 수행했습니다. Back-end(DC synthesis·PnR)는 진행 전입니다.
+MATLAB 고정소수점 시뮬레이터 → RTL → RFSoC ZCU111 실시간 검증까지 수행했습니다. Back-end(DC synthesis·PnR)는 진행 전이며, **TSMC 28 nm 공정으로 tape-out 예정**입니다.
 
-**사용 도구** — MATLAB (고정소수점 시뮬레이터 · HDL 자동 생성 · SPI 제어) · VHDL · ModelSim (bit-exact 검증) · Xilinx Vivado · RFSoC ZCU111
+**사용 도구** — MATLAB (고정소수점 시뮬레이터 · HDL 자동 생성 · SPI 제어) · VHDL · ModelSim (bit-exact 검증) · Xilinx Vivado · Tcl · RFSoC ZCU111
 
 ---
 

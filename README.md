@@ -14,6 +14,7 @@
 | [On-chip Adaptive Bit/Power Loading](masters/adaptive-bpl/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
 | [광대역 칩간 인터페이스](masters/samsung-nrf/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
 | [RFSoC 하드웨어 검증](masters/rfsoc/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
+| [28 nm Back-end Flow 실습](masters/pnr-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
 | [Mixed-Signal 회로 설계](masters/mixed-signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
 
 <table>
@@ -72,25 +73,56 @@
 
 ## 사용 도구 · 언어
 
+### 언어
+
+| 언어 | 사용한 곳 |
+|---|---|
+| **VHDL** | KETI DMT TRX, On-chip BPL, 3L4W 인터페이스 — DSP RTL 전반 |
+| **Verilog HDL** | 2D FSM Stochastic Computing, LEGv8 ARM CPU |
+| **MATLAB** | 전 과제 — 고정소수점 시뮬레이터, HDL 자동 생성, SPI 제어, 결과 분석, back-end flow 자동화 |
+| **Tcl** | 합성 제약(`cons.tcl`), ICC PnR 스크립트, PrimeTime STA, Vivado |
+
+### EDA 도구
+
 | 분류 | 도구 | 사용한 프로젝트 |
 |---|---|---|
-| **언어** | VHDL | KETI DMT TRX, On-chip BPL, 3L4W 인터페이스 |
-| | Verilog HDL | 2D FSM Stochastic Computing, LEGv8 ARM CPU |
-| | MATLAB | 전 과제 — 고정소수점 시뮬레이터, HDL 자동 생성, SPI 제어, 결과 분석 |
 | **RTL 검증** | ModelSim | KETI, On-chip BPL, 3L4W — FXP 모델과 bit-exact 대조 |
+| | Cadence Xcelium | KETI DMT TRX post-simulation |
 | | Xilinx Vivado | RFSoC 구현·ILA 캡처, LEGv8 CPU RTL 시뮬레이션 |
-| **논리 합성** | Synopsys Design Compiler | KETI TRX, 2D FSM, LEGv8 CPU (Nangate 45 nm) |
+| **합성 · Back-end** | Synopsys Design Compiler | KETI TRX, 28 nm PnR 실습, 2D FSM, LEGv8 CPU |
+| | Synopsys Formality | RTL ↔ netlist 등가 검증 |
+| | Synopsys PrimeTime | Pre-STA · Post-STA · PT-ECO |
+| | Synopsys IC Compiler | PnR — floorplan · powerplan · CTS · route · chip finish |
+| | Synopsys StarRC | 기생 성분 추출 (SPEF) |
 | **커스텀 회로** | Cadence Virtuoso | LC VCO · BGR · CP-PLL (28 nm), Ring VCO (90 nm), Ring OSC (TSMC 28 nm) |
 | | Spectre ADE | transient · AC · S-parameter · PSS · pnoise · parametric sweep |
 | | HSPICE | Ring VCO |
-| | OrCAD PSpice | 2-stage cascode amplifier |
-| **Layout · 검증** | Cadence Virtuoso Layout | TSMC 28 nm Ring Oscillator |
-| | Siemens Calibre | DRC · LVS · PEX (TSMC 28 nm) |
+| | PSpice | 2-stage cascode amplifier |
+| **Layout · 검증** | Cadence Virtuoso Layout | TSMC 28 nm Ring Oscillator, GDS merge |
+| | Siemens Calibre | DRC · LVS · PEX, sign-off |
 | | Microwind | CMOS 90 nm full adder — λ 기반 layout |
 | **PCB** | Altium Designer | RF up/down converter 보드 (schematic · layout · DFM/DRC) |
-| **FPGA 플랫폼** | RFSoC ZCU111 / ZCU208 | DMT TRX 실시간 검증, 2보드 칩간 통신 |
-| **측정 장비** | Keysight M8196A AWG | 14 nm DMT TRX 실칩 측정 |
-| | VSG25A | 2보드 외부 클럭 동기화 |
+
+### 하드웨어 · 측정 장비
+
+| 장비 | 사용한 곳 |
+|---|---|
+| **RFSoC ZCU111 / ZCU208** | DMT TRX 실시간 검증, 2보드 칩간 통신 |
+| RFMC500 / VFE-100 front-end card | 4-lane differential 구성 |
+| ISI · notch channel board | 채널 조건별 측정 |
+| **Keysight M8196A AWG** | 14 nm DMT TRX 실칩 외부 클럭 |
+| VSG25A 신호발생기 | 2보드 외부 클럭 동기화 |
+| Phase shifter · Power splitter | 보드 간 기준 클럭 분배·위상 정렬 |
+| SPI adapter board | PC ↔ 칩 설정 (MATLAB 시퀀싱) |
+
+### 공정
+
+| 공정 | 프로젝트 |
+|---|---|
+| **삼성 14 nm FinFET** | KETI DMT Transceiver — tape-out 완료 |
+| **TSMC 28 nm** | On-chip Adaptive BPL (tape-out 예정), 3L4W 인터페이스 (tape-out 예정), Ring Oscillator full-custom, PnR 실습, Mixed-Signal |
+| CMOS 90 nm | Ring VCO, 1-bit Full Adder |
+| Nangate 45 nm Open Cell | 2D FSM, LEGv8 ARM CPU 합성 |
 
 <br>
 

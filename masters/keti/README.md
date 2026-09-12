@@ -1,10 +1,26 @@
 # KETI DMT Transceiver
 
-14nm FinFET DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당과 FDE를 통해 주파수 선택적 채널에 대응합니다.
+DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당과 FDE를 통해 주파수 선택적 채널에 대응합니다. **삼성 14 nm FinFET 공정으로 tape-out**했습니다.
 
-**사용 도구** — MATLAB (고정소수점 모델링 · SPI 제어 시퀀싱) · VHDL · ModelSim · Synopsys Design Compiler · Keysight M8196A AWG
+**사용 도구** — MATLAB (고정소수점 모델링 · SPI 제어 시퀀싱) · VHDL · ModelSim · **Cadence Xcelium** (post-simulation) · Synopsys Design Compiler · Keysight M8196A AWG
 
-> 아래 성능은 공동 연구의 시스템 결과입니다. 개인 담당 블록과 기여 문장은 별도 확인 후 확정합니다.
+---
+
+## 본인 담당 범위
+
+여러 기관이 블록을 나눠 맡은 공동 과제입니다. **본인 담당은 TX / RX DMT DSP입니다.**
+
+| 블록 | 담당 |
+|---|---|
+| **TX / RX DMT DSP** | **본인** — 고정소수점 모델링, VHDL RTL, ModelSim·Xcelium 검증, DC 합성 |
+| DAC · ADC | 한양대학교 |
+| PLL · SPI | KETI |
+| PnR | 외주 |
+| PCB 보드 | 외주 |
+
+PnR과 PCB는 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 제대로 협의하기 위해 back-end 흐름을 따로 익혔고, 그 과정은 [TSMC 28 nm Back-end Flow 실습](../pnr-28nm/README.md)에 정리했습니다.
+
+> 아래 성능은 위 블록들이 합쳐진 **시스템 전체 결과**입니다.
 >
 > 이 페이지의 figure와 수치는 **IEEE ISSCC 2027 투고 원고**에서 가져왔습니다. ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 보강해 ISSCC 2027에 재투고한 **심사 중** 원고입니다. 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.
 

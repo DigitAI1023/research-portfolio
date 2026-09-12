@@ -77,7 +77,28 @@ Dadda 곱셈기의 효율적인 부분곱 생성과 SARA의 빠른 덧셈을 함
 - 정확도(PSNR): Wallace_SARA 대비 **120.8 % 향상**
 - 전력·면적은 비교 대상 중 가장 큽니다. 논문에서도 이를 단점으로 명시하고, 더 간결한 구조로의 최적화를 후속 과제로 두었습니다.
 
-정확도는 **두 이미지를 곱셈기로 블렌딩한 뒤 결과 영상의 PSNR을 측정**하는 방식으로 평가했습니다.
+### 정확도를 어떻게 쟀는가 — 이미지 블렌딩
+
+근사 곱셈기의 오차는 입력 조합마다 달라서 최대 오차 하나로는 실사용 품질을 알기 어렵습니다. 그래서 **실제 데이터로 32×32 곱셈을 수천만 번 돌려보는** 방식을 택했습니다.
+
+![Image blending flow](figures/accuracy-blend-flow.png)
+
+8-bit 회색조 이미지 두 장(0~255)을 각각 2²⁴배 스케일해 32-bit 곱셈기 입력으로 만들고, 근사 곱셈기를 통과시킨 64-bit 출력을 2²⁴로 나눠 8-bit로 되돌립니다. 픽셀 하나가 곱셈 한 번이므로, 512×512 이미지면 **26만 번 이상의 실제 곱셈 결과**가 출력 영상에 그대로 누적됩니다. 오차가 크면 영상에 잡음으로 드러납니다.
+
+<table>
+<tr>
+<td width="50%"><img src="figures/accuracy-blend-wallace.png" alt="Wallace_RCA blended"></td>
+<td width="50%"><img src="figures/accuracy-blend-gasu.png" alt="GASU blended"></td>
+</tr>
+<tr>
+<td align="center"><b>(a) Wallace_RCA</b> — 정확 곱셈, PSNR ∞</td>
+<td align="center"><b>(b) GASU</b> — 근사 곱셈, PSNR 53 dB</td>
+</tr>
+</table>
+
+**두 영상이 눈으로 구분되지 않습니다.** PSNR 53 dB는 그만큼 오차가 작다는 뜻입니다. 같은 방식으로 잰 Wallace_SARA는 24 dB로, 이 경우에는 영상에 눈에 띄는 열화가 나타납니다.
+
+곱셈기 하나의 지연을 1.72 ns에서 1.46 ns로 줄이면서도 **출력 품질은 육안으로 구분되지 않는 수준**을 유지했다는 것이 GASU의 근거입니다.
 
 ---
 

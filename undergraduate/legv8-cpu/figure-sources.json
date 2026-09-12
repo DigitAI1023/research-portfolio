@@ -68,5 +68,26 @@
         "origin":  "embedded image 34",
         "kind":  "diagram",
         "note":  "SpeedMUL removes the stall"
+    },
+    {
+        "file":  "accuracy-blend-flow.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 20",
+        "kind":  "diagram",
+        "note":  "Image blending flow for accuracy measurement: 8b inputs x 2^24 -\u003e 32b multiplier inputs -\u003e approximate multiplier -\u003e 64b -\u003e / 2^24 -\u003e 8b output. Resized to 1700x439"
+    },
+    {
+        "file":  "accuracy-blend-wallace.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image5.png (rId13, 5th in document order)",
+        "kind":  "simulation",
+        "note":  "Fig2(a). Wallace_RCA blended image, exact multiplication, PSNR Inf"
+    },
+    {
+        "file":  "accuracy-blend-gasu.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image6.png (rId14, 6th in document order)",
+        "kind":  "simulation",
+        "note":  "Fig2(b). GASU blended image, PSNR 53 dB. (a)/(b) assignment confirmed from r:embed order in word/document.xml"
     }
 ]

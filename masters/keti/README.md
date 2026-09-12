@@ -4,7 +4,7 @@
 
 > 아래 성능은 공동 연구의 시스템 결과입니다. 개인 담당 블록과 기여 문장은 별도 확인 후 확정합니다.
 >
-> 이 페이지의 figure와 수치는 **IEEE ASSCC 2026 투고 원고**에서 가져왔습니다. 해당 원고는 **채택되지 않았고 현재 다른 학회에 재투고한 상태**입니다. 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.
+> 이 페이지의 figure와 수치는 **IEEE ISSCC 2027 투고 원고**에서 가져왔습니다. ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 보강해 ISSCC 2027에 재투고한 **심사 중** 원고입니다. 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.
 
 ## 설계 IP 구조
 
@@ -69,7 +69,7 @@ Notch 채널의 SNR, 로딩 분포와 constellation을 함께 제시합니다. �
 
 ## 근거
 
-ASSCC2026_DMT_TRX_FINAL_reordered.docx, Fig. 1–7 및 본문. 실측 사진: 2509_DMT_TRX_Measurement_V1.pptx, slide 2.
+ISSCC2027_DMT.docx 및 ISSCC2027_Figures.docx 본문·Fig. 1–7. 실측 사진: 2509_DMT_TRX_Measurement_V1.pptx, slide 2.
 
 [RFSoC 단계별 검증](../rfsoc/README.md) · [← 석사 연구](../README.md)
 

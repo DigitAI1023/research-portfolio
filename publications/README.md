@@ -3,11 +3,11 @@
 | # | 제목 | 발표 | 저자 위치 | 상태 | 원본 |
 |---|---|---|---|---|---|
 | 1 | *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 IEEE ICCE-Asia | 7인 중 5저자 | 발표 완료 | [📄](../masters/keti/paper/2025_ICCE-ASIA_presentation.pdf) |
-| 2 | *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | IEEE ASSCC 2026 투고 | 15인 중 6저자 | **미채택 · 타 학회 재투고** | [📄](../masters/keti/paper/ASSCC2026_DMT_TRX_manuscript.pdf) |
+| 2 | *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | **IEEE ISSCC 2027 투고** | 15인 중 6저자 | 심사 중 | [📄 원고](../masters/keti/paper/ISSCC2027_DMT_manuscript.pdf) · [📄 figure](../masters/keti/paper/ISSCC2027_DMT_figures.pdf) |
 | 3 | *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON | 3인 중 2저자 | 게재 · 포스터 발표 | [📄](../undergraduate/stochastic-computing/paper/IEEE_TENCON_Practical_2D_FSM_for_Stochastic_Computing.pdf) |
 | 4 | *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회 | 2인 중 2저자 | 발표 완료 (포스터) | [📄](../undergraduate/legv8-cpu/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
 
-> 2번 원고는 ASSCC 2026에 투고했으나 채택되지 않았고, 현재 다른 학회에 재투고한 상태입니다. 채택된 성과로 기재하지 않습니다.
+> 2번 원고는 ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 내용을 보강해 **IEEE ISSCC 2027에 재투고한 상태**입니다. 심사 중이므로 채택된 성과로 기재하지 않습니다.
 
 ---
 
@@ -83,23 +83,47 @@ Pr[error] ≈ erfc( (p − m) / σ )
 
 ---
 
-## 2. 14 nm FinFET DMT 송수신기 데이터패스 — ASSCC 2026 투고 원고
+## 2. 14 nm FinFET DMT 송수신기 데이터패스 — ISSCC 2027 투고 원고
 
 **Seoyoung Jang¹, Dongjun Lee², Taeho Shin³, Yujin Choi¹, Yoonji Choi¹, Gayoung Kang¹, Jaewon Lee⁴, Sungho Lee², Hyunseuk Ahn², Kwang-Ho Lee², Haram Ju², Fatemeh Akbar⁵, Kiarash Gharibdoust⁶, Jaeduk Han³, Gain Kim¹**
 ¹DGIST · ²KETI · ³한양대 · ⁴ETH Zürich · ⁵Sharif University of Technology · ⁶EM Microelectronics
 
-📄 [원고](../masters/keti/paper/ASSCC2026_DMT_TRX_manuscript.pdf)
+📄 [원고](../masters/keti/paper/ISSCC2027_DMT_manuscript.pdf) · [figure](../masters/keti/paper/ISSCC2027_DMT_figures.pdf)
 
-> **ASSCC 2026에 투고했으나 채택되지 않았습니다.** 현재 다른 학회에 재투고한 상태입니다.
+> ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 내용을 보강해 **IEEE ISSCC 2027에 재투고**했습니다. **심사 중**입니다.
 
-14 nm FinFET으로 제작한 DMT 송수신기 데이터패스를 다룹니다. 설계·검증·측정 내용은 [KETI DMT Transceiver 페이지](../masters/keti/README.md)에 정리되어 있습니다.
+### 기여
 
-원고에 기술된 주요 내용입니다.
+DAC/ADC 기반 wireline TRX는 디지털 등화·변조를 재구성할 수 있어 불균일한 채널에 유리합니다. DMT는 대역을 직교 부채널로 나눠 채널 조건에 따라 부채널별 비트·전력을 배분하므로, **주파수 선택적 감쇠나 notch가 있는 채널**에 특히 잘 맞습니다.
 
-- 가변 tap 수 변환을 위한 **외부 스케일 고정소수점 방식** — DMT TX의 분수 비트 제어
-- notch 채널을 포함한 다양한 채널 조건 대응을 위한 **동적 power loading 계수** — 15-bit 고정소수점 IFFT 출력을 정수·분수부로 나누고 3-bit 제어로 7-bit 창을 선택
-- **프로그래머블 CP** — 8 / 16 / 32 tap 중 선택해 채널 조건별 CP 오버헤드 최적화
-- 14 nm FinFET 제작 후 PCB에 wire-bonding하여 특성 측정
+기존 연구는 DMT **TX만** 또는 **RX만** 구현했거나, notch 채널 대응이 제한적인 아날로그 중심 multicarrier 구조였습니다. 이 원고는 **TX와 RX DSP를 모두 통합해 부채널 적응 동작이 가능한 DMT TRX 데이터패스**를 14 nm FinFET에서 처음으로 보입니다.
+
+### 구조
+
+| 항목 | 내용 |
+|---|---|
+| IFFT / FFT | 128-tap. **32-tap 코어를 재사용**하는 pipelined MDF 구조로 면적 효율 확보 |
+| 고정소수점 스케일링 | 15-bit IFFT 출력을 정수·분수부로 나누고 **3-bit 제어로 7-bit 창을 선택**. 창을 옮겨 진폭 스케일을 유연하게 조정 |
+| Cyclic Prefix | **8 / 16 / 32 tap 가변**. 채널 조건별로 CP 오버헤드 최적화 |
+| TX 출력 | 7-bit 32-way 병렬 → 7-bit tailless CML DAC → ESD 보호가 있는 T-coil |
+| RX 입력 | 8-way time-based SAR ADC → **sign-sign synchronizer** → CP 제거 → FFT → FDE → QAM 복조 |
+
+RX의 sign-sign synchronizer는 [위 ICCE-Asia 연구](#1-dmt-동기화를-위한-cross-correlation-근사--icce-asia-2025)에서 다룬 근사 상관 기법을 적용한 블록입니다.
+
+### 측정
+
+외부 클럭은 Keysight M8196A AWG로 공급하고, TX 클럭은 on-chip PLL과 외부 입력 중 선택합니다. RX 입력은 AC 결합에 common mode 250 mV. TX/RX DSP는 0.9 V, DAC/ADC는 0.8 V로 동작합니다. SPI 설정은 MATLAB으로 시퀀싱했습니다.
+
+| 조건 | 샘플레이트 | Data rate | Aggregate BER | 평균 SNR |
+|---|---|---|---|---|
+| Loopback | 20 GS/s | **51 Gb/s** | 5.2 × 10⁻³ | 18.2 dB (5.5 bits/Hz) |
+| Notch 채널 | 16 GS/s | **27 Gb/s** | 3.9 × 10⁻³ | 14.6 dB |
+
+Notch 채널은 1.8 GHz와 5.5 GHz에 깊은 감쇠가 있는 multi-drop 보드를 씁니다. **SNR이 10 dB 아래인 부채널에는 비트를 배정하지 않습니다.**
+
+전체 전력은 551 mW, 에너지 효율은 **10.8 pJ/b** 입니다.
+
+### 면적
 
 | 블록 | 면적 |
 |---|---|
@@ -111,6 +135,8 @@ Pr[error] ≈ erfc( (p − m) / σ )
 | Digital loop filter | 70 × 70 µm² |
 
 RX·TX DSP 모두 FFT / IFFT 코어가 면적의 대부분을 차지합니다.
+
+설계·검증·측정 내용은 [KETI DMT Transceiver 페이지](../masters/keti/README.md)에 정리되어 있습니다.
 
 ---
 

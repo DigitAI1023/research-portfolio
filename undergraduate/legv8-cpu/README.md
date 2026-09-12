@@ -1,9 +1,13 @@
 # LEGv8 ARM CPU EX단 최적화
 
-**IT 시스템 종합설계 (6인 팀) → 2024 반도체공학회 하계학술대회 포스터 (제2저자)**
+**IT 시스템 종합설계 (6인 팀) → 2024 반도체공학회 하계학술대회 포스터 발표**
 
-*Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit*
-Eunsu Kim, **Gayoung Kang** — Hongik University
+> *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit*
+> 김은수, **강가영** — 홍익대학교 전자전기공학부 (책임저자: 허서원)
+> 2024 반도체공학회 하계학술대회 · 디지털 회로/시스템 분야 · 포스터 발표
+> 2024년도 부처협업형 인재양성 반도체전공트랙사업 지원
+
+📄 [논문·포스터 원본](paper/2024_반도체공학회_하계학술대회_포스터.pdf)
 
 ---
 
@@ -27,9 +31,11 @@ Eunsu Kim, **Gayoung Kang** — Hongik University
 
 ---
 
-## 2. 접근 — 근사 곱셈기로 EX를 1 cycle에
+## 2. 문제 정의
 
-정확도가 덜 중요한 연산에는 근사 곱셈기를 써서 EX 단계를 1 cycle에 끝내자는 것입니다.
+EX 단계를 파이프라인화하면 곱셈 지연은 숨길 수 있지만, **EX에서 해저드가 나면 결국 data stall이 필요**합니다. 논문에서는 방향을 바꿔, 정확도가 덜 중요한 상황에 한해 **근사 곱셈기로 EX를 1 cycle에 끝내는** 접근을 제안했습니다.
+
+근사 컴퓨팅은 저전력 IC 설계에서 유망한 접근입니다. 동적인 근사 수준을 수용하려는 accuracy-configurable adder(ACA) 연구 중 **SARA** 덧셈기를 **Dadda** 곱셈기에 결합해 **GASU(Geometric Approximation Speed Unit)** 를 설계했습니다.
 
 <table>
 <tr>
@@ -42,11 +48,23 @@ Eunsu Kim, **Gayoung Kang** — Hongik University
 </tr>
 </table>
 
-![GASU 32x32](figures/cpu-gasu-32x32.png)
+---
 
-16×16 Dadda_SARA 곱셈기 4개와 32-bit SARA 가산기를 조합해 32×32 **GASU(Geometric Approximation Speed Unit)** 를 구성했습니다.
+## 3. GASU 구조
 
-**곱셈기 비교** — Synopsys Design Compiler, 45 nm Nangate OpenCell Library
+![GASU hierarchy](figures/gasu-hierarchy.png)
+
+32×32 GASU의 계층 구조입니다.
+
+| 계층 | 구성 |
+|---|---|
+| 32×32 GASU | 16×16 Dadda 곱셈기 4개 + 64-bit SARA 가산기 3개 |
+| 16×16 Dadda 곱셈기 | 8×8 Dadda 곱셈기 4개 + 4-bit SARA 가산기 3개 |
+| 64-bit SARA 가산기 | 4-bit SARA 가산기로 구성 |
+
+Dadda 곱셈기의 효율적인 부분곱 생성과 SARA의 빠른 덧셈을 함께 씁니다. Verilog HDL로 게이트 레벨 모델링했습니다.
+
+### 합성 결과 — Synopsys Design Compiler, Nangate 45 nm Open Cell Library
 
 | 구조 | Power | Delay | Area | PSNR |
 |---|---:|---:|---:|---:|
@@ -55,27 +73,78 @@ Eunsu Kim, **Gayoung Kang** — Hongik University
 | Wallace_SARA | 3.7 mW | 1.33 ns | 4,650 µm² | 24 dB |
 | **GASU (제안)** | 3.9 mW | 1.46 ns | 4,919 µm² | **53 dB** |
 
-Wallace_SARA가 1.33 ns로 가장 빠르지만 PSNR 24 dB로 오차가 큽니다. GASU는 지연을 1.46 ns로 낮추면서 **PSNR 53 dB**를 확보해, 속도와 정확도 사이에서 쓸 만한 지점을 잡았습니다.
+- 지연 시간: Wallace_RCA 대비 **15.1 % 감소**
+- 정확도(PSNR): Wallace_SARA 대비 **120.8 % 향상**
+- 전력·면적은 비교 대상 중 가장 큽니다. 논문에서도 이를 단점으로 명시하고, 더 간결한 구조로의 최적화를 후속 과제로 두었습니다.
+
+정확도는 **두 이미지를 곱셈기로 블렌딩한 뒤 결과 영상의 PSNR을 측정**하는 방식으로 평가했습니다.
 
 ---
 
-## 3. 결과
+## 4. Sub ALU 적용 — 언제 근사 곱셈기를 쓸 것인가
+
+![Execution stage datapath](figures/ex-datapath.png)
+
+기존 LEGv8의 EX 단계에 GASU 기반 **Sub ALU**를 덧붙인 datapath입니다. 핵심은 **아무 때나 근사 곱셈기를 쓰지 않는다**는 점입니다.
+
+Sub ALU는 **곱셈 ALU control 신호와 Execution Hazard 신호가 함께 오는 critical한 상황에서만** 활성화됩니다. Hazard 신호는 Forwarding Unit에서 받습니다.
+
+| 상황 | 사용 경로 |
+|---|---|
+| 곱셈이 아닌 명령 | Main ALU (정확) |
+| 곱셈이지만 Execution Hazard 없음 | Main ALU (정확) |
+| **곱셈 + Execution Hazard** | **Sub ALU (GASU, 근사)** |
+
+결과를 급히 forwarding해야 하는 경우에만 정확도를 양보하는 구조입니다.
 
 ![Pipeline](figures/cpu-pipeline.png)
 
-일반 `MUL`은 EX1·EX2 두 단계를 쓰고, GASU를 쓰는 `SpeedMUL`은 SUB MUL 한 단계로 끝납니다.
+일반 `MUL`은 EX1·EX2 두 단계를 쓰고, `SpeedMUL`은 SUB MUL 한 단계로 끝납니다.
+
+### EX 단계 전체 지연
+
+| 구성 | Delay |
+|---|---:|
+| Main ALU (Wallace_RCA) | 6.71 ns |
+| **Sub ALU (GASU)** | **4.88 ns** |
+
+---
+
+## 5. RTL 시뮬레이션 결과
+
+`clock = 5 ns` 기준으로 곱셈 명령 5개를 연속 실행했습니다.
+
+![No Sub ALU](figures/wave-no-subalu.png)
+
+**(a) Sub ALU 없음** — Hazard가 올 때마다 `stall` 신호가 뜨고 `totalresult`가 `X`로 무효화됩니다. 총 **45 ns** 소요.
+
+![With Sub ALU](figures/wave-with-subalu.png)
+
+**(b) Sub ALU 적용** — 곱셈이 1 cycle 안에 끝나 data stall 없이 모든 명령이 각 단계를 통과합니다. 총 **30 ns** 소요.
 
 ![Hazard after](figures/cpu-hazard-after.png)
 
-`SpeedMUL`로 바꾸면 같은 의존 관계에서도 stall이 사라집니다.
+같은 의존 관계의 명령열에서 stall이 사라집니다.
 
 | 항목 | 값 |
 |---|---|
-| EX stage delay (Wallace_RCA) | 6.71 ns |
-| **EX stage delay (GASU)** | **4.88 ns** |
+| 곱셈 명령 5개 실행 (Sub ALU 없음) | 45 ns |
+| **곱셈 명령 5개 실행 (Sub ALU 적용)** | **30 ns** |
+| 단축 | **33 %** |
 | 최종 동작 주파수 | 200 MHz (5 ns) |
 
-EX 단계가 critical path였으므로, 이 단계를 4.88 ns로 줄여 전체 클럭을 200 MHz로 맞췄습니다.
+---
+
+## 6. 정리
+
+근사 곱셈기로 **연산 정확도를 조건부로 양보해 파이프라인 해저드를 완화**한다는 접근에 의의가 있습니다. 전력·면적이 늘어난다는 단점이 남아 있어, 더 간결한 구조의 근사 곱셈기로 최적화하는 것이 후속 과제입니다.
+
+**참고문헌**
+
+1. X. W. Sapatnekar et al., *A simple yet efficient accuracy-configurable adder design*, IEEE TVLSI, 26(6), 1112–1125, 2018.
+2. W. J. Townsend et al., *A comparison of Dadda and Wallace multiplier delays*, SPIE Advanced Signal Processing Algorithms, Architectures, and Implementations XIII, Vol. 5205, 552–560, 2003.
+3. G. Jeong et al., *A Study on multiplier architecture optimized for 32-bit processor with 3-stage pipeline*, 대한전자공학회 ISOCC, 656–660, 2004.
+4. S. Song et al., *Novel in-memory computing adder using 8+T SRAM*, Electronics, 11(6), 929, 2022.
 
 ---
 

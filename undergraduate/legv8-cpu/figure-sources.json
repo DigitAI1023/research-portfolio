@@ -7,6 +7,13 @@
         "note":  "Pipelined LEGv8 schematic with exception handler"
     },
     {
+        "file":  "cpu-hazard-before.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 22",
+        "kind":  "diagram",
+        "note":  "MUL dependency causing 1 cycle stall"
+    },
+    {
         "file":  "cpu-full-adders.png",
         "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
         "origin":  "embedded image 14",
@@ -21,11 +28,18 @@
         "note":  "SARA architecture"
     },
     {
-        "file":  "cpu-gasu-32x32.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
-        "origin":  "embedded image 18",
+        "file":  "gasu-hierarchy.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image1.jpg",
         "kind":  "diagram",
-        "note":  "32x32 GASU"
+        "note":  "Fig1. 32x32 GASU hierarchy: 4x 16x16 Dadda + 64-bit SARA adders"
+    },
+    {
+        "file":  "ex-datapath.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image2.png",
+        "kind":  "diagram",
+        "note":  "Fig3. Execution stage datapath with Sub ALU and Forwarding Unit"
     },
     {
         "file":  "cpu-pipeline.png",
@@ -35,11 +49,18 @@
         "note":  "Pipeline comparison, upscaled 3.5x from 287x89"
     },
     {
-        "file":  "cpu-hazard-before.png",
-        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
-        "origin":  "embedded image 22",
-        "kind":  "diagram",
-        "note":  "MUL dependency causing 1 cycle stall"
+        "file":  "wave-no-subalu.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image7.png",
+        "kind":  "simulation",
+        "note":  "Fig4(a). RTL waveform without Sub ALU. stall asserted at each hazard, 45 ns total"
+    },
+    {
+        "file":  "wave-with-subalu.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\학부생-2-포스터-홍익대-김은수_강가영(최종).docx",
+        "origin":  "word/media/image8.png",
+        "kind":  "simulation",
+        "note":  "Fig4(b). RTL waveform with Sub ALU. no stall, 30 ns total"
     },
     {
         "file":  "cpu-hazard-after.png",

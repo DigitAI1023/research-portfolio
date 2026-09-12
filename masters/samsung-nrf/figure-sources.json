@@ -78,30 +78,74 @@
         "note":  "Input Pipe / Offset-Bin to Signed / WHT Combine / div-4 round (A+2)\u003e\u003e2 / Signed to Offset-Bin / Output Pipe + valid delay line"
     },
     {
-        "file":  "mode-off-lane2.jpg",
+        "file":  "rtl-modes-tx.png",
         "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
-        "slide":  12,
-        "caption_in_source":  "OFF ZCU208 Verification, avg BER = 1.61E-1",
-        "kind":  "board-measurement",
-        "author":  "Yoonji Choi (research note, 2026-09-06); RTL under test designed by self",
-        "note":  "Lane 2. Decoder bypassed - no constellation forms"
+        "slide":  6,
+        "caption_in_source":  "3L4W DMT TX RTL 검증 — OFF/NP1/WHT, sign_fir 128tap 검증 완료",
+        "converted":  "full slide rendered via PowerPoint COM at 2400x1350",
+        "kind":  "rtl-simulation",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)",
+        "note":  "Per lane: FXP output / RTL output / Diff"
     },
     {
-        "file":  "mode-np1-lane2.jpg",
+        "file":  "rtl-modes-rx.png",
         "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
-        "slide":  11,
-        "caption_in_source":  "NP1 ZCU208 Verification, avg BER = 3.86E-3 (BRAM) / 4.37E-3 (TX DSP)",
-        "kind":  "board-measurement",
-        "author":  "Yoonji Choi (research note); RTL under test designed by self",
-        "note":  "Lane 2, 16-QAM"
+        "slide":  7,
+        "caption_in_source":  "3L4W DMT RX RTL 검증 — OFF/NP1/WHT, sign_fir 128tap 검증 완료",
+        "converted":  "full slide rendered via PowerPoint COM at 2400x1350",
+        "kind":  "rtl-simulation",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)",
+        "note":  "MATLAB GT vs VHDL measured constellation, BER after FDE in each title. OFF reaches 8.3e-2"
     },
     {
-        "file":  "mode-wht-lane0.jpg",
+        "file":  "zcu208-wht.png",
         "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
         "slide":  10,
-        "caption_in_source":  "WHT ZCU208 Verification, avg BER = 5.68E-4 (BRAM) / 5.34E-4 (TX DSP)",
+        "caption_in_source":  "ZCU208 Verification — WHT. BRAM avg BER = 5.34E-4, TX DSP avg BER = 5.68E-4",
+        "converted":  "full slide rendered via PowerPoint COM at 2400x1350",
         "kind":  "board-measurement",
-        "author":  "Yoonji Choi (research note); RTL under test designed by self",
-        "note":  "Lane 0, 32-QAM. Lane differs from the OFF/NP1 panels - labelled explicitly in the page"
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)"
+    },
+    {
+        "file":  "zcu208-np1.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
+        "slide":  11,
+        "caption_in_source":  "ZCU208 Verification — NP1. BRAM avg BER = 4.37E-3, TX DSP avg BER = 3.86E-3",
+        "converted":  "full slide rendered via PowerPoint COM at 2400x1350",
+        "kind":  "board-measurement",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)"
+    },
+    {
+        "file":  "zcu208-off.png",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
+        "slide":  12,
+        "caption_in_source":  "ZCU208 Verification — OFF. BRAM avg BER = 1.61E-1, TX DSP avg BER = 1.61E-1",
+        "converted":  "full slide rendered via PowerPoint COM at 2400x1350",
+        "kind":  "board-measurement",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)"
+    },
+    {
+        "file":  "mode-off.jpg",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
+        "slide":  12,
+        "kind":  "board-measurement",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)",
+        "note":  "Lane 0, TX DSP source - same lane and subchannel group as mode-np1 / mode-wht"
+    },
+    {
+        "file":  "mode-np1.jpg",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
+        "slide":  11,
+        "kind":  "board-measurement",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)",
+        "note":  "Lane 0, TX DSP source"
+    },
+    {
+        "file":  "mode-wht.jpg",
+        "source":  "D:\\CASSP\\04_presentations\\강가영\\NP1.pptx",
+        "slide":  10,
+        "kind":  "board-measurement",
+        "author":  "Design under test (RX DSP, 3L4W decoder) by self; verification figures from the lab\u0027s ZCU208 verification record (Yoonji Choi research note, 2026-09-06)",
+        "note":  "Lane 0, TX DSP source"
     }
 ]

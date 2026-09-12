@@ -4,7 +4,7 @@
 |---|---|
 | 과제명 | 다중 칩 연산 시스템을 위한 광대역 칩간 인터페이스 설계 기술 개발<br>*Wide-bandwidth Chip-to-Chip Interface Design Technology for Multi-Chip Computing Systems* |
 | 지원 | 삼성전자 미래기술육성사업 (SRFC-IT2301-01) · 한국연구재단 석사과정생연구장려금 |
-| 본인 역할 | 다중 레인 인코더/디코더 RTL 설계, DMT DSP RTL 설계, RFSoC 실시간 검증 환경 구축 |
+| 본인 역할 | **RX DSP 및 3L4W 디코더 설계**, 다중 레인 인코더 설계, DMT DSP RTL 설계, RFSoC 실시간 검증 환경 구축 |
 
 차동 신호 방식은 wire 2개로 lane 1개를 전송하므로 핀 효율이 절반입니다. 이 과제는 **N개 lane을 (N+1)개 wire로** 전송하는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 상관 잡음을 상쇄하는 것을 목표로 합니다. 최종 목표는 7-lane 8-wire이고, 현재 3-lane 4-wire까지 RTL과 하드웨어 검증을 마쳤습니다.
 
@@ -71,32 +71,60 @@ NP1 : c ∈ {1, 3, 5}     → ×3 = (x<<1)+x , ×5 = (x<<2)+x
 
 RX front-end DSP입니다. ADC가 주는 offset binary를 MSB invert로 signed 12b로 바꾸고, WHT combine에서 ±1 가감산만으로 A₁~A₃를 만든 뒤 `(A+2)>>2`로 라운딩합니다. 다시 offset binary로 되돌려 RX DSP에 넘깁니다. valid 신호는 지연선으로 데이터와 정렬합니다. 이 슬라이스가 NumSignal(32 또는 64)만큼 병렬로 복제됩니다.
 
+### 디코더 bypass 모드를 만든 이유
+
+기존 RX RTL에는 WHT와 NP1 모드만 있고 디코더를 우회하는 경로가 없었습니다. 디코더가 상관 잡음을 실제로 얼마나 제거하는지 정량화하려면 **디코더를 끈 상태와 직접 비교**해야 하므로, RX DSP에 OFF 모드를 추가했습니다. 이후 검증은 OFF / NP1 / WHT 세 모드를 같은 조건에서 돌리는 방식으로 진행했습니다.
+
+### RTL 모드별 검증
+
+![TX RTL mode comparison](figures/rtl-modes-tx.png)
+
+TX 쪽입니다. 레인마다 FXP 모델 출력과 RTL 출력을 위아래로 놓고 그 아래에 차분(Diff)을 그렸습니다. 세 모드 모두 차분이 ±1 LSB 수준의 산발적인 값에 머뭅니다. sign_fir 128 tap 구성까지 포함해 검증을 마쳤습니다.
+
+![RX RTL mode comparison](figures/rtl-modes-rx.png)
+
+RX 쪽입니다. 각 모드에서 왼쪽이 MATLAB 기준(GT), 오른쪽이 RTL(VHDL) 결과이고, 그림 제목에 FDE 이후 BER이 적혀 있습니다. OFF는 성상이 뭉개져 BER이 8.3 × 10⁻²까지 올라가고, NP1에서 형태가 돌아오며, WHT에서 가장 선명해집니다.
+
 ### 상관 잡음 제거 확인 — ZCU208 실측
 
-loopback 채널에 상관 잡음을 임의로 주입하고, 디코더를 끄고(OFF) / NP1 / WHT 세 모드로 돌려 비교했습니다.
+loopback 채널에 상관 잡음을 임의로 주입하고 세 모드로 돌렸습니다. 송신 신호원은 BRAM에 저장한 파형을 재생하는 경로와 TX DSP가 직접 만드는 경로 두 가지로 각각 측정했습니다.
+
+같은 레인(Lane 0)·같은 부채널을 TX DSP 경로에서 비교하면 차이가 그대로 보입니다.
 
 <table>
 <tr>
-<td width="33%"><img src="figures/mode-off-lane2.jpg" alt="Decoder OFF"></td>
-<td width="33%"><img src="figures/mode-np1-lane2.jpg" alt="NP1 decoding"></td>
-<td width="33%"><img src="figures/mode-wht-lane0.jpg" alt="WHT decoding"></td>
+<td width="33%"><img src="figures/mode-off.jpg" alt="Decoder OFF"></td>
+<td width="33%"><img src="figures/mode-np1.jpg" alt="NP1 decoding"></td>
+<td width="33%"><img src="figures/mode-wht.jpg" alt="WHT decoding"></td>
 </tr>
 <tr>
-<td><b>OFF</b> · Lane 2 — 디코더 bypass. 성상이 형성되지 않습니다.</td>
-<td><b>NP1</b> · Lane 2 — 16-QAM 성상이 복원됩니다.</td>
-<td><b>WHT</b> · Lane 0 — 32-QAM 성상이 가장 뚜렷합니다.</td>
+<td><b>OFF</b> — 디코더 bypass. 성상이 형성되지 않습니다.</td>
+<td><b>NP1</b> — 성상이 복원됩니다.</td>
+<td><b>WHT</b> — 가장 뚜렷합니다.</td>
 </tr>
 </table>
 
 | 모드 | avg BER (BRAM 소스) | avg BER (TX DSP 소스) |
 |---|---|---|
 | OFF (디코더 bypass) | 1.61 × 10⁻¹ | 1.61 × 10⁻¹ |
-| NP1 | 3.86 × 10⁻³ | 4.37 × 10⁻³ |
-| **WHT** | **5.68 × 10⁻⁴** | **5.34 × 10⁻⁴** |
+| NP1 | 4.37 × 10⁻³ | 3.86 × 10⁻³ |
+| **WHT** | **5.34 × 10⁻⁴** | **5.68 × 10⁻⁴** |
 
-디코더를 끄면 BER이 0.161로 통신이 성립하지 않고, WHT 복호를 켜면 5.68 × 10⁻⁴까지 내려갑니다. 상관 잡음이 zero-sum 계수합으로 소거된다는 것을 하드웨어에서 확인한 결과입니다.
+디코더를 끄면 BER 0.161로 통신이 성립하지 않고, WHT 복호를 켜면 5.34 × 10⁻⁴까지 내려갑니다. **약 300배 차이**입니다. 상관 잡음이 zero-sum 계수합으로 소거된다는 것을 하드웨어에서 확인한 결과입니다.
 
-> ZCU208 실측은 연구실 공동 수행입니다. 이 페이지에 실은 본인 수행분은 3L4W 인코더·디코더와 front-end DSP의 RTL 설계입니다.
+모드별 전체 측정 결과입니다. 각 그림은 왼쪽이 BRAM 소스, 오른쪽이 TX DSP 소스이고, 레인마다 부채널별 BER 곡선과 성상 3종을 함께 보여줍니다.
+
+![WHT, ZCU208](figures/zcu208-wht.png)
+
+**WHT** — 세 레인 모두 성상이 분리되고, 부채널별 BER이 목표선 부근에 모입니다.
+
+![NP1, ZCU208](figures/zcu208-np1.png)
+
+**NP1** — 성상은 복원되지만 BER 곡선이 목표선 위에 있습니다. 대신 클리핑 구간에서 raw lane으로 우회할 수 있다는 점이 WHT에 없는 장점입니다.
+
+![OFF, ZCU208](figures/zcu208-off.png)
+
+**OFF** — 디코더를 우회하면 성상이 전혀 형성되지 않고 부채널별 BER이 10⁻¹ 수준에 붙습니다. 상관 잡음이 그대로 남는다는 뜻입니다.
 
 ---
 
@@ -164,9 +192,11 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 수행한 항목입니다.
 
+- **3L4W 디코더 설계** — WHT · NP1 두 스킴, 계수 MUX 기반 공유 데이터패스, `(Σ+2)>>2` 라운딩 통일
+- **RX DSP 설계** — 3L4W front-end DSP, ADC calibration, sign synchronizer, CP 제거 FIFO, FFT/FDE lane, constellation scanner
+- 디코더 효과를 정량화하기 위한 **RX DSP bypass(OFF) 모드 추가** 및 3모드 비교 검증 체계 구성
+- 3L4W 인코더 설계 및 DMT TX 데이터패스 통합
 - N-lane N-wire 구조 MATLAB 모델링, 상관 잡음 상쇄 알고리즘과 전송 효율 정량 검증
-- WHT · NP1 두 스킴의 3L4W 인코더·디코더 설계, 계수 MUX 기반 공유 데이터패스와 `(Σ+2)>>2` 라운딩 통일
-- 3L4W RX front-end DSP RTL 설계 및 DMT TX/RX 데이터패스 통합
 - 비트/파워 로딩을 포함한 단일 레인 DMT DSP RTL 설계 — 32-way 128-tap, MDF 구조
 - MATLAB → VHDL 자동 생성 프레임워크 구축, fixed-point 모델과 bit-exact 대조
 - ZCU111 2보드 외부 클럭 동기화 실시간 검증 환경 구축 및 단일 레인 IP 하드웨어 검증
@@ -195,4 +225,4 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ## 자료 출처
 
-7L8W 구조도와 단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림 1~6입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`, 모드별 성상과 BER은 연구실 ZCU208 검증 기록에서 가져왔습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.
+7L8W 구조도와 단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림 1~6입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`에서 가져왔습니다. OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것이며, 그림은 연구실 검증 기록에서 인용했습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.

@@ -4,6 +4,8 @@ DMT 유선 송수신기의 bit/power loading을 호스트 PC에서 칩 안으로
 
 MATLAB 고정소수점 시뮬레이터 → RTL → RFSoC ZCU111 실시간 검증까지 수행했습니다. Back-end(DC synthesis·PnR)는 진행 전입니다.
 
+**사용 도구** — MATLAB (고정소수점 시뮬레이터 · HDL 자동 생성 · SPI 제어) · VHDL · ModelSim (bit-exact 검증) · Xilinx Vivado · RFSoC ZCU111
+
 ---
 
 ## 1. 시스템 구조

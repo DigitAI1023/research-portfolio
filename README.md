@@ -70,13 +70,36 @@
 
 ---
 
+## 사용 도구 · 언어
+
+| 분류 | 도구 | 사용한 프로젝트 |
+|---|---|---|
+| **언어** | VHDL | KETI DMT TRX, On-chip BPL, 3L4W 인터페이스 |
+| | Verilog HDL | 2D FSM Stochastic Computing, LEGv8 ARM CPU |
+| | MATLAB | 전 과제 — 고정소수점 시뮬레이터, HDL 자동 생성, SPI 제어, 결과 분석 |
+| **RTL 검증** | ModelSim | KETI, On-chip BPL, 3L4W — FXP 모델과 bit-exact 대조 |
+| | Xilinx Vivado | RFSoC 구현·ILA 캡처, LEGv8 CPU RTL 시뮬레이션 |
+| **논리 합성** | Synopsys Design Compiler | KETI TRX, 2D FSM, LEGv8 CPU (Nangate 45 nm) |
+| **커스텀 회로** | Cadence Virtuoso | LC VCO · BGR · CP-PLL (28 nm), Ring VCO · Full adder (90 nm), Ring OSC (TSMC 28 nm) |
+| | Spectre ADE | transient · AC · S-parameter · PSS · pnoise · parametric sweep |
+| | HSPICE | Ring VCO, Full adder |
+| | OrCAD PSpice | 2-stage cascode amplifier |
+| **Layout · 검증** | Cadence Virtuoso Layout | CMOS 90 nm full adder, TSMC 28 nm Ring OSC |
+| | Siemens Calibre | DRC · LVS · PEX (TSMC 28 nm) |
+| **PCB** | Altium Designer | RF up/down converter 보드 (schematic · layout · DFM/DRC) |
+| **FPGA 플랫폼** | RFSoC ZCU111 / ZCU208 | DMT TRX 실시간 검증, 2보드 칩간 통신 |
+| **측정 장비** | Keysight M8196A AWG | 14 nm DMT TRX 실칩 측정 |
+| | VSG25A | 2보드 외부 클럭 동기화 |
+
+<br>
+
 ## 다루는 범위
 
 | | |
 |---|---|
-| **알고리즘 · 모델링** | MATLAB 고정소수점 시뮬레이터, bit/power loading, FEXT·상관 잡음 상쇄 |
-| **RTL 설계** | VHDL, MATLAB→HDL 자동 생성, ModelSim bit-exact 검증, Synopsys DC 합성 |
-| **FPGA 검증** | RFSoC ZCU111 / ZCU208, SPI 제어, 실시간 constellation·BER 측정 |
+| **알고리즘 · 모델링** | 고정소수점 시뮬레이터, bit/power loading, 상관 잡음 상쇄 |
+| **RTL 설계** | MATLAB→HDL 자동 생성, bit-exact 검증, 논리 합성 |
+| **FPGA 검증** | 실시간 constellation·BER 측정, SPI 제어, 2보드 클럭 동기화 |
 | **실칩 측정** | 14 nm FinFET TRX, PCB 설계, 고속 측정 장비 |
 | **아날로그 회로** | Ring VCO, LC VCO, BGR, CP-PLL, 증폭기 |
 | **Layout** | CMOS 90 nm · TSMC 28 nm full-custom, DRC/LVS, PEX |

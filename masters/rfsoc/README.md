@@ -2,6 +2,8 @@
 
 Single tone으로 변환기와 신호 경로를 확인한 뒤, Multi tone·SNR 측정으로 채널을 파악하고, 동기화·FFT/FDE 내부 관측을 거쳐 constellation scanner와 BER로 수신 품질을 확인합니다.
 
+**사용 도구** — Xilinx Vivado (Block Design · 합성 · 구현 · ILA) · MATLAB (파형 생성 · SPI 제어 · 결과 분석) · RFSoC ZCU111 / ZCU208
+
 ## 검증 경로
 
 ```mermaid

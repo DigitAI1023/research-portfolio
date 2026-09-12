@@ -7,6 +7,8 @@
 > 2024 반도체공학회 하계학술대회 · 디지털 회로/시스템 분야 · 포스터 발표
 > 2024년도 부처협업형 인재양성 반도체전공트랙사업 지원
 
+**사용 도구** — Verilog HDL · Xilinx Vivado (RTL 시뮬레이션) · Synopsys Design Compiler (Nangate 45 nm Open Cell Library)
+
 📄 [논문·포스터 원본](paper/2024_반도체공학회_하계학술대회_포스터.pdf)
 
 ---

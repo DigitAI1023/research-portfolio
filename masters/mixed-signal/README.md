@@ -4,6 +4,8 @@
 
 BGR(기준전압 생성기), LC VCO, Charge-Pump PLL을 각각 설계하고 시뮬레이션했습니다.
 
+**사용 도구** — Cadence Virtuoso · Spectre ADE (transient · AC · S-parameter · PSS · pnoise · parametric sweep) · MATLAB (CP-PLL 거동 모델)
+
 | 블록 | 주요 결과 |
 |---|---|
 | [Bandgap Reference](#1-bandgap-reference-generator) | VREF **1.25 V**, 저항비 L = 8.35로 TC 최적화 |

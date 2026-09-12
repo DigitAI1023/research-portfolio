@@ -2,6 +2,8 @@
 
 14nm FinFET DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당과 FDE를 통해 주파수 선택적 채널에 대응합니다.
 
+**사용 도구** — MATLAB (고정소수점 모델링 · SPI 제어 시퀀싱) · VHDL · ModelSim · Synopsys Design Compiler · Keysight M8196A AWG
+
 > 아래 성능은 공동 연구의 시스템 결과입니다. 개인 담당 블록과 기여 문장은 별도 확인 후 확정합니다.
 >
 > 이 페이지의 figure와 수치는 **IEEE ISSCC 2027 투고 원고**에서 가져왔습니다. ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 보강해 ISSCC 2027에 재투고한 **심사 중** 원고입니다. 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.

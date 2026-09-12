@@ -4,6 +4,8 @@
 
 PLL의 VCO 블록과 그 앞단 레귤레이터를 설계했습니다. Ring VCO는 출력이 다음 인버터의 입력으로 되돌아가는 구조라 supply noise가 매 단마다 누적되어 jitter로 쌓입니다. **공급 전압의 흔들림을 앞단에서 잡아 VCO에 깨끗한 전원을 주는 것**이 과제의 핵심입니다.
 
+**사용 도구** — Cadence Virtuoso · HSPICE (transient · AC · eye diagram)
+
 ![System block diagram](figures/vco-system.png)
 
 Regulating Amplifier가 `Vcp`를 받아 `Vc`를 만들고, 이 `Vc`가 Ring VCO의 공급으로 들어갑니다. Ring VCO 출력은 level shifter를 거쳐 `clk0 ~ clk3b` 8상 클럭으로 나옵니다.

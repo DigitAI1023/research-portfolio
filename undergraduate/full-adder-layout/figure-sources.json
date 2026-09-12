@@ -33,5 +33,33 @@
         "origin":  "embedded image 10",
         "kind":  "layout",
         "note":  "2-bit RCA layout"
+    },
+    {
+        "file":  "fa-transient.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\C135001_강가영_CAD2.pdf",
+        "origin":  "embedded image 2",
+        "kind":  "simulation",
+        "note":  "8 input combinations swept, Cout delay markers 11/19/17/18 ps"
+    },
+    {
+        "file":  "fa-delay-delete.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\C135001_강가영_CAD2.pdf",
+        "origin":  "embedded image 3",
+        "kind":  "simulation",
+        "note":  "Delete case A=B=0, A/B held DC and Cin pulsed. S delay rise 12 ps / fall 15 ps"
+    },
+    {
+        "file":  "fa-delay-propagate.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\C135001_강가영_CAD2.pdf",
+        "origin":  "embedded image 5",
+        "kind":  "simulation",
+        "note":  "Propagate case, S delay 28 ps rise and fall (worst case)"
+    },
+    {
+        "file":  "rca-transient.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\C135001_강가영_CAD2.pdf",
+        "origin":  "embedded image 11",
+        "kind":  "simulation",
+        "note":  "2-bit RCA critical path, all-propagate. Cout 28 ps, S0 28 ps, S1 58 ps"
     }
 ]

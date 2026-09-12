@@ -10,6 +10,8 @@
 
 과제의 최종 목표 구조는 7-lane 8-wire이지만, **실제 설계·검증과 tape-out은 3-lane 4-wire 구성으로 진행합니다.** 공정은 TSMC 28 nm입니다.
 
+**사용 도구** — MATLAB (모델링 · HDL 자동 생성) · VHDL · ModelSim · Xilinx Vivado · RFSoC ZCU111 / ZCU208 · Synopsys Design Compiler (예정)
+
 ---
 
 ## 1. 3-lane 4-wire 인코더 · 디코더

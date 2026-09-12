@@ -7,6 +7,8 @@
 
 📄 [논문 원본](paper/IEEE_TENCON_Practical_2D_FSM_for_Stochastic_Computing.pdf)
 
+**사용 도구** — Verilog HDL · Synopsys Design Compiler (전력 · 면적 측정)
+
 ---
 
 ## 1. 배경 — Stochastic Computing
@@ -41,7 +43,7 @@
 
 M = N = 4로 가로·세로를 맞췄습니다. **sigmoid처럼 0을 기준으로 대칭인 함수에서는 K와 X에 같은 가중치를 주는 것이 정확도에 유리**하기 때문입니다.
 
-`Pk`와 `Pwt` 파라미터는 출력 T(Px)와 실제 값 Py의 오차를 최소화하도록 정했습니다. `Pk`를 [0, 1] 구간에서 0.0001씩 올리며 오차를 계산해 최적점을 찾았고, Python으로 검증했습니다. sigmoid(4x)의 경우 `Pk = 0.5`입니다.
+`Pk`와 `Pwt` 파라미터는 출력 T(Px)와 실제 값 Py의 오차를 최소화하도록 정했습니다. `Pk`를 [0, 1] 구간에서 0.0001씩 올리며 오차를 계산해 최적점을 찾았습니다. sigmoid(4x)의 경우 `Pk = 0.5`입니다.
 
 ---
 

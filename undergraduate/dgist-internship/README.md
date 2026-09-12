@@ -9,6 +9,8 @@ RF 송수신 보드를 schematic부터 PCB layout까지 설계하고, TSMC 28 nm
 | 2024 하계 | RF up/down converter **PCB 설계**, wireline TRX·equalization 문헌 조사, DMT MATLAB 시뮬레이션 |
 | 2025 동계 | **Ring Oscillator full-custom** — schematic → layout → DRC/LVS → PEX (TSMC 28 nm) |
 
+**사용 도구** — Altium Designer (PCB) · Cadence Virtuoso (schematic · layout · ADE) · Siemens Calibre (DRC · LVS · PEX) · MATLAB
+
 ---
 
 ## 1. RF Modulator PCB 설계 — 2024 하계

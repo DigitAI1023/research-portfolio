@@ -14,6 +14,14 @@
 
 [KETI 프로젝트 보기](masters/keti/README.md)
 
+### On-chip Adaptive Bit/Power Loading
+
+호스트 PC가 하던 bit/power loading을 칩 안으로 옮긴 졸업연구입니다. RX가 파일럿으로 부채널 오차를 측정하고, 같은 다이의 엔진이 나눗셈·로그 없이 정수 연산만으로 비트와 전력을 결정해 TX CONFMEM에 직접 씁니다. 고정소수점 시뮬레이터 → RTL → RFSoC 실시간 검증까지 수행했습니다.
+
+![BPL feedback loop](masters/adaptive-bpl/figures/sys-feedback.png)
+
+[설계와 검증 보기](masters/adaptive-bpl/README.md)
+
 ### RFSoC 하드웨어 검증
 
 Single tone → Multi tone → SNR 및 로딩 → 동기화 → FFT/FDE → constellation scanner와 BER 순서로 검증 과정을 정리했습니다.
@@ -24,7 +32,7 @@ Single tone → Multi tone → SNR 및 로딩 → 동기화 → FFT/FDE → cons
 
 ## 추가 구성 예정
 
-- 석사: On-chip Adaptive BPL, 삼성미래기술·한국연구재단 석사과정생연구장려금, Mixed-signal·Full-custom 프로젝트
+- 석사: 삼성미래기술·한국연구재단 석사과정생연구장려금, Mixed-signal·Full-custom 프로젝트
 - 학부: Ring VCO, Stochastic Computing 학부연구생 연구, CPU EX단 최적화, 회로설계 프로젝트 및 연구 인턴
 
 자료 검토를 마친 페이지부터 순차적으로 추가합니다.

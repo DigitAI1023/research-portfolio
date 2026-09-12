@@ -1,0 +1,30 @@
+﻿[
+    {
+        "file":  "cascode-concept.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\실험3 프로젝트_C135001 강가영 (1).pdf",
+        "origin":  "embedded image 1",
+        "kind":  "diagram",
+        "note":  "Cascode output resistance Ro = (gm2 ro2) ro1"
+    },
+    {
+        "file":  "amp-schematic.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\실험3 프로젝트_C135001 강가영 (1).pdf",
+        "origin":  "embedded image 2",
+        "kind":  "schematic",
+        "note":  "2-stage cascode amplifier, PSpice"
+    },
+    {
+        "file":  "amp-transient.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\실험3 프로젝트_C135001 강가영 (1).pdf",
+        "origin":  "embedded image 6",
+        "kind":  "simulation",
+        "note":  "Transient: Vin, V1, Vout"
+    },
+    {
+        "file":  "amp-gain-measure.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\실험3 프로젝트_C135001 강가영 (1).pdf",
+        "origin":  "embedded image 8",
+        "kind":  "simulation",
+        "note":  "Measured: Vin 100.0 mV pp, Vout 5.098 V pp -\u003e gain 51.0"
+    }
+]

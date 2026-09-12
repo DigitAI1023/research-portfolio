@@ -10,7 +10,7 @@
 | [On-chip Adaptive Bit/Power Loading](#on-chip-adaptive-bitpower-loading) | 로딩 연산을 호스트에서 칩 안으로 이전 | FXP BER **2.16 × 10⁻⁵** |
 | [광대역 칩간 인터페이스](#다중-칩-연산-시스템용-광대역-칩간-인터페이스) | 3-lane 4-wire 다중 레인 인터페이스 (TSMC 28 nm) | 디코더 ON/OFF **BER 300배** |
 | [RFSoC 하드웨어 검증](#rfsoc-하드웨어-검증) | 단계별 FPGA 실시간 검증 방법론 | 최대 **128-QAM** 성상 확인 |
-| [학부 프로젝트](#학부-프로젝트) | Ring VCO · Stochastic Computing · CPU EX단 | supply ripple **16배 억제** |
+| [학부 과정](#학부-과정) | Ring VCO · Stochastic Computing · CPU EX단 · full-custom | supply ripple **16배 억제** |
 
 <br>
 
@@ -91,19 +91,22 @@ Single tone → Multi tone → SNR 및 로딩 → 동기화 → FFT/FDE → cons
 
 ---
 
-## 학부 프로젝트
+## 학부 과정
 
-**홍익대학교 전자전기공학부 · 아날로그 회로 설계와 디지털 연산기 설계**
+**홍익대학교 전자전기공학부 · 아날로그 회로 설계, 디지털 연산기 설계, full-custom layout**
 
-![Ring VCO system](undergraduate/figures/vco-system.png)
+![Ring VCO system](undergraduate/ring-vco/figures/vco-system.png)
 
 | 프로젝트 | 분야 | 대표 결과 |
 |---|---|---|
-| Regulated-Supply 8-Phase Ring VCO | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
-| 2D FSM 기반 Stochastic Computing | 디지털 · 학부연구생 | FoM **1.37× 개선**, MSE 0.37 × 10⁻³ |
-| 근사 곱셈기 기반 CPU EX단 최적화 | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
+| [Regulated-Supply 8-Phase Ring VCO](undergraduate/ring-vco/README.md) | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
+| [2D FSM 기반 Stochastic Computing](undergraduate/stochastic-computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선**, IEEE TENCON 발표 |
+| [LEGv8 ARM CPU EX단 최적화](undergraduate/legv8-cpu/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
+| [1-bit Full Adder Layout](undergraduate/full-adder-layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm² |
+| [2-Stage Cascode Amplifier](undergraduate/amplifier-design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
+| [DGIST 연구 인턴](undergraduate/dgist-internship/README.md) | PCB · full-custom | Ring OSC **PEX 9.35 → 4.75 GHz** |
 
-**→ [학부 프로젝트 보기](undergraduate/README.md)**
+**→ [학부 과정 전체 보기](undergraduate/README.md)**
 
 <br>
 

@@ -1,0 +1,23 @@
+﻿[
+    {
+        "file":  "sc-2dfsm-arch.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\1571135242 paper.pdf",
+        "origin":  "embedded image 4",
+        "kind":  "diagram",
+        "note":  "Fig5. Proposed 4x4 2D FSM architecture"
+    },
+    {
+        "file":  "sc-2dfsm-states.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\1571135242 paper.pdf",
+        "origin":  "embedded image 5",
+        "kind":  "diagram",
+        "note":  "Fig6. 4x4 state transition, S0-S15"
+    },
+    {
+        "file":  "sc-sigmoid-accuracy.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\1571135242 paper.pdf",
+        "origin":  "embedded image 6",
+        "kind":  "simulation",
+        "note":  "Fig7. sigmoid(4x): Accurate vs FSM 1D vs Proposed FSM 2D"
+    }
+]

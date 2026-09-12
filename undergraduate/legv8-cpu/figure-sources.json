@@ -1,0 +1,51 @@
+﻿[
+    {
+        "file":  "pipelined-schematic.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\Team_2_finalppt.pdf",
+        "origin":  "embedded image 16",
+        "kind":  "diagram",
+        "note":  "Pipelined LEGv8 schematic with exception handler"
+    },
+    {
+        "file":  "cpu-full-adders.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 14",
+        "kind":  "diagram",
+        "note":  "Full adder variants"
+    },
+    {
+        "file":  "cpu-sara.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 16",
+        "kind":  "diagram",
+        "note":  "SARA architecture"
+    },
+    {
+        "file":  "cpu-gasu-32x32.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 18",
+        "kind":  "diagram",
+        "note":  "32x32 GASU"
+    },
+    {
+        "file":  "cpu-pipeline.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 8",
+        "kind":  "diagram",
+        "note":  "Pipeline comparison, upscaled 3.5x from 287x89"
+    },
+    {
+        "file":  "cpu-hazard-before.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 22",
+        "kind":  "diagram",
+        "note":  "MUL dependency causing 1 cycle stall"
+    },
+    {
+        "file":  "cpu-hazard-after.png",
+        "source":  "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\취준\\학부경험\\[포스터]{0715~0717}2024 반도체공학회 하계학술대회.pdf",
+        "origin":  "embedded image 34",
+        "kind":  "diagram",
+        "note":  "SpeedMUL removes the stall"
+    }
+]

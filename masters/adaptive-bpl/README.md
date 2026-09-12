@@ -255,9 +255,13 @@ TX APPLY가 지시한 `b_n`과 RUN 심볼에서 역으로 추정한 `b_n`을 31�
 
 ## 관련 페이지
 
-- [RFSoC 하드웨어 검증 과정](../../engineering/rfsoc/README.md)
+- [RFSoC 하드웨어 검증 과정](../rfsoc/README.md)
 - [KETI DMT Transceiver](../keti/README.md)
 
 ## 자료 출처
 
 모든 figure는 `On-Chip Adaptive BPL_강가영_발표자료.pptx`(2026-09-11)와 `figures_thesis/`(2026-09-04 ~ 09-06)에서 가져왔습니다. 슬라이드 번호와 원본 경로는 [`figure-sources.json`](figure-sources.json)에 기록했습니다.
+
+---
+
+[← 석사 연구](../README.md)

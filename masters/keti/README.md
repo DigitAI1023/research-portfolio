@@ -69,5 +69,5 @@ Notch 채널의 SNR, 로딩 분포와 constellation을 함께 제시합니다. �
 
 ASSCC2026_DMT_TRX_FINAL_reordered.docx, Fig. 1–7 및 본문. 실측 사진: 2509_DMT_TRX_Measurement_V1.pptx, slide 2.
 
-[RFSoC 단계별 검증](../../engineering/rfsoc/README.md) · [메인](../../README.md)
+[RFSoC 단계별 검증](../rfsoc/README.md) · [← 석사 연구](../README.md)
 

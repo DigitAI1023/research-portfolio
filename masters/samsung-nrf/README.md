@@ -71,32 +71,54 @@ RX front-end DSP입니다. ADC가 주는 offset binary를 MSB invert로 signed 1
 
 ### RTL 모드별 검증
 
-![TX RTL mode comparison](figures/rtl-modes-tx.png)
+RX RTL을 세 모드로 돌려 MATLAB 고정소수점 모델과 대조했습니다. 아래는 Lane 1의 RTL(VHDL) 출력 성상이며, FDE 이후 BER을 함께 표기했습니다.
 
-TX 쪽입니다. 레인마다 FXP 모델 출력과 RTL 출력을 위아래로 놓고 그 아래에 차분(Diff)을 그렸습니다. 세 모드 모두 차분이 ±1 LSB 수준의 산발적인 값에 머뭅니다. sign_fir 128 tap 구성까지 포함해 검증을 마쳤습니다.
+<table>
+<tr>
+<td width="33%"><img src="figures/rtl-rx-off.png" alt="RTL, decoder OFF"></td>
+<td width="33%"><img src="figures/rtl-rx-np1.png" alt="RTL, NP1"></td>
+<td width="33%"><img src="figures/rtl-rx-wht.png" alt="RTL, WHT"></td>
+</tr>
+<tr>
+<td><b>OFF</b> — BER 8.32 × 10⁻²</td>
+<td><b>NP1</b> — BER 3.67 × 10⁻²</td>
+<td><b>WHT</b> — BER 1.13 × 10⁻²</td>
+</tr>
+</table>
 
-![RX RTL mode comparison](figures/rtl-modes-rx.png)
-
-RX 쪽입니다. 각 모드에서 왼쪽이 MATLAB 기준(GT), 오른쪽이 RTL(VHDL) 결과이고, 그림 제목에 FDE 이후 BER이 적혀 있습니다. OFF는 성상이 뭉개져 BER이 8.3 × 10⁻²까지 올라가고, NP1에서 형태가 돌아오며, WHT에서 가장 선명해집니다.
+TX RTL도 같은 세 모드로 FXP 모델과 대조했고, 레인별 차분이 ±1 LSB 수준에 머무는 것을 확인했습니다. sign_fir 128 tap 구성까지 포함해 검증을 마쳤습니다.
 
 ### 상관 잡음 제거 확인 — ZCU208 실측
 
 loopback 채널에 상관 잡음을 임의로 주입하고 세 모드로 돌렸습니다. 송신 신호원은 BRAM에 저장한 파형을 재생하는 경로와 TX DSP가 직접 만드는 경로 두 가지로 각각 측정했습니다.
 
-같은 레인(Lane 0)·같은 부채널을 TX DSP 경로에서 비교하면 차이가 그대로 보입니다.
+아래는 TX DSP 경로에서 얻은 세 레인의 성상입니다. 같은 부채널을 모드만 바꿔가며 비교한 것입니다.
 
 <table>
 <tr>
-<td width="33%"><img src="figures/mode-off.jpg" alt="Decoder OFF"></td>
-<td width="33%"><img src="figures/mode-np1.jpg" alt="NP1 decoding"></td>
-<td width="33%"><img src="figures/mode-wht.jpg" alt="WHT decoding"></td>
+<th width="10%"></th><th width="30%">Lane 0</th><th width="30%">Lane 1</th><th width="30%">Lane 2</th>
 </tr>
 <tr>
-<td><b>OFF</b> — 디코더 bypass. 성상이 형성되지 않습니다.</td>
-<td><b>NP1</b> — 성상이 복원됩니다.</td>
-<td><b>WHT</b> — 가장 뚜렷합니다.</td>
+<td align="center"><b>OFF</b></td>
+<td><img src="figures/zcu208-off-lane0.jpg" alt="OFF lane0"></td>
+<td><img src="figures/zcu208-off-lane1.jpg" alt="OFF lane1"></td>
+<td><img src="figures/zcu208-off-lane2.jpg" alt="OFF lane2"></td>
+</tr>
+<tr>
+<td align="center"><b>NP1</b></td>
+<td><img src="figures/zcu208-np1-lane0.jpg" alt="NP1 lane0"></td>
+<td><img src="figures/zcu208-np1-lane1.jpg" alt="NP1 lane1"></td>
+<td><img src="figures/zcu208-np1-lane2.jpg" alt="NP1 lane2"></td>
+</tr>
+<tr>
+<td align="center"><b>WHT</b></td>
+<td><img src="figures/zcu208-wht-lane0.jpg" alt="WHT lane0"></td>
+<td><img src="figures/zcu208-wht-lane1.jpg" alt="WHT lane1"></td>
+<td><img src="figures/zcu208-wht-lane2.jpg" alt="WHT lane2"></td>
 </tr>
 </table>
+
+디코더를 우회한 OFF에서는 세 레인 모두 성상이 형성되지 않습니다. NP1에서 격자가 돌아오고, WHT에서 각 점이 가장 조밀하게 모입니다.
 
 | 모드 | avg BER (BRAM 소스) | avg BER (TX DSP 소스) |
 |---|---|---|
@@ -106,19 +128,7 @@ loopback 채널에 상관 잡음을 임의로 주입하고 세 모드로 돌렸�
 
 디코더를 끄면 BER 0.161로 통신이 성립하지 않고, WHT 복호를 켜면 5.34 × 10⁻⁴까지 내려갑니다. **약 300배 차이**입니다. 상관 잡음이 zero-sum 계수합으로 소거된다는 것을 하드웨어에서 확인한 결과입니다.
 
-모드별 전체 측정 결과입니다. 각 그림은 왼쪽이 BRAM 소스, 오른쪽이 TX DSP 소스이고, 레인마다 부채널별 BER 곡선과 성상 3종을 함께 보여줍니다.
-
-![WHT, ZCU208](figures/zcu208-wht.png)
-
-**WHT** — 세 레인 모두 성상이 분리되고, 부채널별 BER이 목표선 부근에 모입니다.
-
-![NP1, ZCU208](figures/zcu208-np1.png)
-
-**NP1** — 성상은 복원되지만 BER 곡선이 목표선 위에 있습니다. 대신 클리핑 구간에서 raw lane으로 우회할 수 있다는 점이 WHT에 없는 장점입니다.
-
-![OFF, ZCU208](figures/zcu208-off.png)
-
-**OFF** — 디코더를 우회하면 성상이 전혀 형성되지 않고 부채널별 BER이 10⁻¹ 수준에 붙습니다. 상관 잡음이 그대로 남는다는 뜻입니다.
+NP1은 BER이 WHT보다 한 자릿수 높지만, 클리핑 구간에서 raw lane으로 우회할 수 있다는 점이 WHT에 없는 장점입니다.
 
 ---
 

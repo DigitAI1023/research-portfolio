@@ -8,7 +8,7 @@
 |---|---|---|
 | [KETI DMT Transceiver](#keti-dmt-transceiver) | 14 nm FinFET DMT 송수신기 설계·실측 | loopback **51 Gb/s** · 551 mW |
 | [On-chip Adaptive Bit/Power Loading](#on-chip-adaptive-bitpower-loading) | 로딩 연산을 호스트에서 칩 안으로 이전 | FXP BER **2.16 × 10⁻⁵** |
-| [광대역 칩간 인터페이스](#다중-칩-연산-시스템용-광대역-칩간-인터페이스) | N-lane (N+1)-wire 다중 레인 인터페이스 | 실시간 BER **1.51 × 10⁻⁸** |
+| [광대역 칩간 인터페이스](#다중-칩-연산-시스템용-광대역-칩간-인터페이스) | 3-lane 4-wire 다중 레인 인터페이스 (TSMC 28 nm) | 디코더 ON/OFF **BER 300배** |
 | [RFSoC 하드웨어 검증](#rfsoc-하드웨어-검증) | 단계별 FPGA 실시간 검증 방법론 | 최대 **128-QAM** 성상 확인 |
 
 <br>
@@ -60,13 +60,13 @@ IP 구조, chip layout, PCB 도면, 측정 환경과 결과를 정리했습니�
 
 **삼성전자 미래기술육성사업 (SRFC-IT2301-01) · 한국연구재단 석사과정생연구장려금**
 
-차동 신호는 wire 2개로 lane 1개를 보내 핀 효율이 절반입니다. N개 lane을 (N+1)개 wire로 보내는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 간섭(FEXT)을 상쇄합니다. 최종 목표는 7-lane 8-wire입니다.
+차동 신호는 wire 2개로 lane 1개를 보내 핀 효율이 절반입니다. 3개 lane을 4개 wire로 보내는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 상관 잡음을 상쇄합니다. **TSMC 28 nm tape-out 예정**입니다.
 
-![7L8W transceiver](masters/samsung-nrf/figures/arch-7l8w.png)
+![3L4W architecture](masters/samsung-nrf/figures/arch-3l4w.png)
 
-- 단일 레인 DMT DSP RTL — 32-way 128-tap IFFT/FFT, MDF 구조로 면적 절감
-- Walsh-Hadamard 기반 3L4W 인코더 설계 및 TX 데이터패스 통합
-- ZCU111 2보드 외부 클럭 동기화 실시간 검증 — **BER 1.51 × 10⁻⁸**, 32-QAM EVM −28.52 dB
+- WHT · NP1 두 스킴의 3L4W 디코더 설계 — 곱셈기 없이 shift + add와 ÷4로 복원
+- RX DSP 설계 및 디코더 bypass 모드 추가 — 상관 잡음 제거 효과를 직접 비교
+- ZCU208 실측: 디코더 OFF **BER 1.61 × 10⁻¹** → WHT **5.34 × 10⁻⁴**, 약 300배 개선
 
 **→ [과제 내용 보기](masters/samsung-nrf/README.md)**
 

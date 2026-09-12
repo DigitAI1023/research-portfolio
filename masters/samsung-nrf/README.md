@@ -6,23 +6,17 @@
 | 지원 | 삼성전자 미래기술육성사업 (SRFC-IT2301-01) · 한국연구재단 석사과정생연구장려금 |
 | 본인 역할 | **RX DSP 및 3L4W 디코더 설계**, 다중 레인 인코더 설계, DMT DSP RTL 설계, RFSoC 실시간 검증 환경 구축 |
 
-차동 신호 방식은 wire 2개로 lane 1개를 전송하므로 핀 효율이 절반입니다. 이 과제는 **N개 lane을 (N+1)개 wire로** 전송하는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 상관 잡음을 상쇄하는 것을 목표로 합니다. 최종 목표는 7-lane 8-wire이고, 현재 3-lane 4-wire까지 RTL과 하드웨어 검증을 마쳤습니다.
+차동 신호 방식은 wire 2개로 lane 1개를 전송하므로 핀 효율이 절반입니다. 이 과제는 **N개 lane을 (N+1)개 wire로** 전송하는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 상관 잡음을 상쇄합니다.
+
+과제의 최종 목표 구조는 7-lane 8-wire이지만, **실제 설계·검증과 tape-out은 3-lane 4-wire 구성으로 진행합니다.** 공정은 TSMC 28 nm입니다.
 
 ---
 
-## 1. 목표 구조 — 7-lane 8-wire
-
-![7L8W transceiver block diagram](figures/arch-7l8w.png)
-
-Die 1의 DSP TX가 적응형 bit/power loading으로 7개 lane을 만들고, 인코더가 이를 8개 wire로 확산합니다. 8번째는 redundancy lane입니다. Die 2에서는 clipping detection이 각 wire의 포화 여부를 판단해, 정상 구간에서는 디코더 출력을, 포화 구간에서는 raw 수신값을 선택하도록 MUX를 제어합니다. 클리핑이 디코딩 오류로 번지는 것을 막는 구조입니다.
-
----
-
-## 2. 3-lane 4-wire 인코더 · 디코더
+## 1. 3-lane 4-wire 인코더 · 디코더
 
 ![3L4W architecture](figures/arch-3l4w.png)
 
-N = 3 구성입니다. 데이터 레인 3개에 redundancy lane 1개를 더해 wire 4개로 보내고, 수신단이 디지털 영역에서 되돌리면서 **wire에 공통으로 실린 상관 잡음을 함께 제거**합니다.
+데이터 레인 3개에 redundancy lane 1개를 더해 wire 4개로 보내고, 수신단이 디지털 영역에서 되돌리면서 **wire에 공통으로 실린 상관 잡음을 함께 제거**합니다. redundancy wire는 데이터 레인보다 먼저 포화되므로, clipping detection이 포화를 감지하면 해당 샘플은 디코더 출력 대신 raw 수신값으로 우회시켜 오류 전파를 막습니다.
 
 ### 두 가지 스킴 — WHT와 NP1
 
@@ -128,7 +122,7 @@ loopback 채널에 상관 잡음을 임의로 주입하고 세 모드로 돌렸�
 
 ---
 
-## 3. 단일 레인 DMT DSP RTL
+## 2. 단일 레인 DMT DSP RTL
 
 ![Single-lane DMT TRX datapath](figures/datapath-single-lane.png)
 
@@ -142,7 +136,7 @@ MATLAB에서 VHDL을 자동 생성하는 프레임워크를 만들어 per-tap �
 
 ---
 
-## 4. RFSoC 실시간 검증 환경
+## 3. RFSoC 실시간 검증 환경
 
 ![RFSoC verification block diagram](figures/rfsoc-verify-block.png)
 
@@ -171,7 +165,7 @@ MATLAB에서 VHDL을 자동 생성하는 프레임워크를 만들어 per-tap �
 
 ---
 
-## 5. 실시간 검증 결과
+## 4. 실시간 검증 결과
 
 ![RFSoC measurement results](figures/result-rfsoc-ber.png)
 
@@ -188,7 +182,7 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ---
 
-## 6. 본인 수행 범위
+## 5. 본인 수행 범위
 
 수행한 항목입니다.
 
@@ -208,13 +202,13 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ---
 
-## 7. 다음 단계
+## 6. 다음 단계
 
 | 항목 | 내용 |
 |---|---|
-| 멀티 레인 확장 | 3L4W에서 7L8W로 인코더·디코더 확장, 레인 간 간섭 상쇄 로직 RTL 구현 |
-| 2보드 실시간 검증 | ISI 보드를 적용해 다양한 채널 조건에서 부채널별 로딩 동작과 인접 레인 간섭 상쇄를 목표 BER 기준으로 분석 |
-| 논리 합성 분석 | Synopsys Design Compiler로 면적·전력·타이밍 분석, critical path 확인, netlist에 SDF를 적용한 타이밍 시뮬레이션 |
+| **Tape-out** | 3L4W 구성으로 **TSMC 28 nm** tape-out |
+| 논리 합성 · PnR | Synopsys Design Compiler로 면적·전력·타이밍 분석, critical path 확인, netlist에 SDF를 적용한 타이밍 시뮬레이션 |
+| 2보드 실시간 검증 | ISI 보드를 적용해 다양한 채널 조건에서 부채널별 로딩 동작과 레인 간 상관 잡음 상쇄를 목표 BER 기준으로 분석 |
 
 ---
 
@@ -225,4 +219,4 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ## 자료 출처
 
-7L8W 구조도와 단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림 1~6입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`에서 가져왔습니다. OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것이며, 그림은 연구실 검증 기록에서 인용했습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.
+단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`에서 가져왔습니다. OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것이며, 그림은 연구실 검증 기록에서 인용했습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.

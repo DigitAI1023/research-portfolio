@@ -57,6 +57,19 @@
 
 ---
 
+## 📄 [논문 · 발표](publications/README.md)
+
+| 제목 | 발표 | 상태 |
+|---|---|---|
+| *Approximation of Cross Correlation for Energy-Efficient Synchronization of DMT Wireline Transceivers* | 2025 IEEE ICCE-Asia | 발표 완료 |
+| *A 51 Gb/s DAC/ADC-Based DMT Wireline Transceiver Datapath in 14 nm FinFET* | IEEE ASSCC 2026 투고 | 미채택 · 재투고 |
+| *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON | 게재 · 포스터 발표 |
+| *Mitigating Data Hazards in LEGv8 ARM Processor Using GASU* | 2024 반도체공학회 하계학술대회 | 발표 완료 |
+
+<br>
+
+---
+
 ## 다루는 범위
 
 | | |

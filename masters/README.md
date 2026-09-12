@@ -28,12 +28,12 @@ DGIST CASSP Lab. 고속 유선 통신 DSP의 알고리즘 설계부터 RTL 구�
 
 ## 발표 · 논문
 
-| 제목 | 발표 |
-|---|---|
-| *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 ICCE-ASIA |
-| *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | 원고 준비 |
+| 제목 | 발표 | 상태 |
+|---|---|---|
+| *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 IEEE ICCE-Asia | 발표 완료 |
+| *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | IEEE ASSCC 2026 투고 | 미채택 · 타 학회 재투고 |
 
-> 저자 순서와 게재 상태는 확인 후 확정 예정입니다.
+**→ [논문 · 발표 전체 보기](../publications/README.md)**
 
 ---
 

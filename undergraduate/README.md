@@ -25,11 +25,11 @@
 
 ## 논문 · 발표
 
-원본 파일은 각 프로젝트 폴더의 `paper/` 아래에 있습니다. 석사 과정 논문까지 포함한 전체 목록은 [논문 · 발표 페이지](../publications/README.md)에 있습니다.
+IEEE 게재 논문의 PDF는 저작권 때문에 이 저장소에 포함하지 않았습니다. 석사 과정 논문까지 포함한 전체 목록은 [논문 · 발표 페이지](../publications/README.md)에 있습니다.
 
 | 제목 | 발표 | 저자 | 원본 |
 |---|---|---|---|
-| *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON, 게재 · 포스터 발표 | Jiho Kim, **Gayoung Kang**, Youngmin Kim | [📄](stochastic-computing/paper/IEEE_TENCON_Practical_2D_FSM_for_Stochastic_Computing.pdf) |
+| *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON, 게재 · 포스터 발표 | Jiho Kim, **Gayoung Kang**, Youngmin Kim | IEEE Xplore |
 | *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회, 포스터 발표 | 김은수, **강가영** (책임저자 허서원) | [📄](legv8-cpu/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
 
 ---

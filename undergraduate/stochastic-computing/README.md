@@ -5,7 +5,7 @@
 > *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy*
 > Jiho Kim, **Gayoung Kang**, Youngmin Kim — School of Electronics and Electrical Engineering, Hongik University
 
-📄 [논문 원본](paper/IEEE_TENCON_Practical_2D_FSM_for_Stochastic_Computing.pdf)
+> 논문 원본은 IEEE 저작권 대상이라 이 저장소에 포함하지 않았습니다. IEEE Xplore에서 확인할 수 있습니다.
 
 **사용 도구** — Verilog HDL · Synopsys Design Compiler (전력 · 면적 측정)
 

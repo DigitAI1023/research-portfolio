@@ -2,9 +2,9 @@
 
 | # | 제목 | 발표 | 저자 위치 | 상태 | 원본 |
 |---|---|---|---|---|---|
-| 1 | *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 IEEE ICCE-Asia | 7인 중 5저자 | 발표 완료 | [📄](../masters/keti/paper/2025_ICCE-ASIA_presentation.pdf) |
-| 2 | *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | **IEEE ISSCC 2027 투고** | 15인 중 6저자 | 심사 중 | [📄 원고](../masters/keti/paper/ISSCC2027_DMT_manuscript.pdf) · [📄 figure](../masters/keti/paper/ISSCC2027_DMT_figures.pdf) |
-| 3 | *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON | 3인 중 2저자 | 게재 · 포스터 발표 | [📄](../undergraduate/stochastic-computing/paper/IEEE_TENCON_Practical_2D_FSM_for_Stochastic_Computing.pdf) |
+| 1 | *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 IEEE ICCE-Asia | 7인 중 5저자 | 발표 완료 | IEEE Xplore |
+| 2 | *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | **IEEE ISSCC 2027 투고** | 15인 중 6저자 | 심사 중 | 비공개 |
+| 3 | *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON | 3인 중 2저자 | 게재 · 포스터 발표 | IEEE Xplore |
 | 4 | *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회 | 2인 중 2저자 | 발표 완료 (포스터) | [📄](../undergraduate/legv8-cpu/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
 
 > 2번 원고는 ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 내용을 보강해 **IEEE ISSCC 2027에 재투고한 상태**입니다. 심사 중이므로 채택된 성과로 기재하지 않습니다.
@@ -16,7 +16,7 @@
 **Jaewon Lee¹'², Pier-Andrea Francese¹, Korkut Kaan Tokgoz³, Seoyoung Jang¹'⁴, Gayoung Kang⁴, Yoonji Choi⁴, Gain Kim¹'⁴**
 ¹IBM Research Europe · ²ETH Zürich · ³Sabanci University · ⁴DGIST
 
-📄 [발표자료](../masters/keti/paper/2025_ICCE-ASIA_presentation.pdf)
+> 발표자료 원본은 IEEE 저작권 대상이라 이 저장소에 포함하지 않았습니다. 정식 논문은 IEEE Xplore에서 확인할 수 있습니다.
 
 ### 문제
 
@@ -88,7 +88,7 @@ Pr[error] ≈ erfc( (p − m) / σ )
 **Seoyoung Jang¹, Dongjun Lee², Taeho Shin³, Yujin Choi¹, Yoonji Choi¹, Gayoung Kang¹, Jaewon Lee⁴, Sungho Lee², Hyunseuk Ahn², Kwang-Ho Lee², Haram Ju², Fatemeh Akbar⁵, Kiarash Gharibdoust⁶, Jaeduk Han³, Gain Kim¹**
 ¹DGIST · ²KETI · ³한양대 · ⁴ETH Zürich · ⁵Sharif University of Technology · ⁶EM Microelectronics
 
-📄 [원고](../masters/keti/paper/ISSCC2027_DMT_manuscript.pdf) · [figure](../masters/keti/paper/ISSCC2027_DMT_figures.pdf)
+> 심사 중인 원고이므로 본문 PDF는 이 저장소에 포함하지 않았습니다.
 
 > ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 내용을 보강해 **IEEE ISSCC 2027에 재투고**했습니다. **심사 중**입니다.
 

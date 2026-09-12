@@ -1,0 +1,62 @@
+[
+  {
+    "file": "arch-7l8w.png",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image10.bmp",
+    "caption_in_report": "그림 5. 반도체 칩간 시스템을 위한 7L8W 유선 인터페이스 송수신기 회로의 블록도",
+    "converted": "BMP -> PNG, resized to 2200x672",
+    "kind": "diagram",
+    "author": "self"
+  },
+  {
+    "file": "datapath-single-lane.png",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image6.bmp",
+    "caption_in_report": "그림 1. 전체적인 단일 레인 DMT TRX Datapath 블락 다이어그램",
+    "converted": "BMP -> PNG, resized to 1600x447",
+    "kind": "diagram",
+    "author": "self"
+  },
+  {
+    "file": "rfsoc-verify-block.png",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image8.bmp",
+    "caption_in_report": "그림 3. RFSoC 기반으로 DMT TRX datapath를 검증하기 위한 블락 다이어그램",
+    "converted": "BMP -> PNG, resized to 1600x829",
+    "kind": "diagram",
+    "author": "self",
+    "note": "This figure states DAC/ADC 2.048 GS/s; the two-board setup figures state RFMC500 3.2 GS/s. Different configurations - not reconciled."
+  },
+  {
+    "file": "setup-2board-diagram.png",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image11.bmp",
+    "caption_in_report": "그림 6. 2보드 구성의 DMT TX/RX RFSoC 실시간 검증 셋업",
+    "converted": "BMP -> PNG, resized to 1600x613",
+    "kind": "diagram",
+    "author": "self"
+  },
+  {
+    "file": "setup-2board-photo.jpg",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image7.bmp",
+    "caption_in_report": "그림 2. ZCU111 2보드를 활용한 DMT TX/RX 실시간 검증 세팅",
+    "converted": "BMP -> JPEG q88, resized to 1500x1126",
+    "kind": "lab-photo",
+    "author": "self",
+    "note": "Annotated in the report: 100MHz Clock ref, Phase shifter, Power Splitter, TX Board (3.2GS/s DAC), RX Board (3.2GS/s ADC), Channel Board, Original/Shifted ref clock"
+  },
+  {
+    "file": "result-rfsoc-ber.png",
+    "source": "D:\\CASSP\\000_개인별디렉토리\\08_강가영\\14_석사과정연구장려금\\1차년도_연차보고서\\붙임3-1. 2026년도 석사과정생연구장려금 연차보고서 양식_강가영.docx",
+    "origin": "word/media/image9.wmf",
+    "caption_in_report": "그림 4. RFSoC 측정 결과 (a) 서브채널별 BER, (b) 32-QAM constellation diagram, (c) 32-QAM constellation diagram의 histogram",
+    "converted": "WMF vector rendered at 4x, resized to 2400x730",
+    "kind": "board-measurement",
+    "author": "self",
+    "note": "BER 1.51e-08, EVM(32-QAM) -28.52 dB"
+  },
+  {
+    "_text_source": "3L4W encoder description (Walsh-Hadamard H4, common gain, fixed-point handling, bit-exact verification) comes from D:\\CASSP\\000_개인별디렉토리\\08_강가영\\08_삼성미래기술\\2026_[미래기술육성사업] 반기별 연구 실적 및 계획_김가인.docx, 2026 상반기 실적, item 1. That report carries no 3L4W figures - the [그림] entries there are placeholders. DAC and ADC items in the same report belong to other project members and are excluded from this page's claims."
+  }
+]

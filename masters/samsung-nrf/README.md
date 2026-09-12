@@ -4,11 +4,9 @@
 |---|---|
 | 과제명 | 다중 칩 연산 시스템을 위한 광대역 칩간 인터페이스 설계 기술 개발<br>*Wide-bandwidth Chip-to-Chip Interface Design Technology for Multi-Chip Computing Systems* |
 | 지원 | 삼성전자 미래기술육성사업 (SRFC-IT2301-01) · 한국연구재단 석사과정생연구장려금 |
-| 본인 역할 | DMT DSP RTL 설계, 다중 레인 인코더 설계, RFSoC 실시간 검증 환경 구축 |
+| 본인 역할 | 다중 레인 인코더/디코더 RTL 설계, DMT DSP RTL 설계, RFSoC 실시간 검증 환경 구축 |
 
-차동 신호 방식은 wire 2개로 lane 1개를 전송하므로 핀 효율이 절반입니다. 이 과제는 **N개 lane을 (N+1)개 wire로** 전송하는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 간섭(FEXT)을 상쇄하는 것을 목표로 합니다. 최종 목표는 7-lane 8-wire입니다.
-
-같은 과제가 삼성전자 미래기술육성사업과 한국연구재단 석사과정생연구장려금 두 곳에서 지원됩니다. 아래 내용은 본인이 작성한 **석사과정생연구장려금 1차년도 연차보고서**와 **미래기술육성사업 2026년 상반기 반기보고서** 중 본인 수행분입니다.
+차동 신호 방식은 wire 2개로 lane 1개를 전송하므로 핀 효율이 절반입니다. 이 과제는 **N개 lane을 (N+1)개 wire로** 전송하는 구조에 DMT 변조를 결합해, 핀을 늘리지 않고 대역폭을 올리면서 레인 간 상관 잡음을 상쇄하는 것을 목표로 합니다. 최종 목표는 7-lane 8-wire이고, 현재 3-lane 4-wire까지 RTL과 하드웨어 검증을 마쳤습니다.
 
 ---
 
@@ -16,28 +14,93 @@
 
 ![7L8W transceiver block diagram](figures/arch-7l8w.png)
 
-Die 1의 DSP TX가 적응형 bit/power loading으로 7개 lane을 만들고, 7-lane 8-wire 인코더가 이를 8개 wire로 확산합니다. 8번째는 redundancy lane입니다. Die 2에서는 clipping detection이 각 wire의 포화 여부를 판단해, 정상 구간에서는 디코더 출력을, 포화 구간에서는 raw 수신값을 선택하도록 MUX를 제어합니다. 클리핑이 디코딩 오류로 번지는 것을 막는 구조입니다.
-
-### 3-lane 4-wire 인코더 — 실제 구현한 중간 단계
-
-2026년 상반기에는 N=3 구성으로 인코더를 설계하고 DMT TX 데이터패스에 통합했습니다.
-
-Walsh-Hadamard 행렬 H₄로 3개 레인을 4개 wire에 직교 확산합니다. 가감산만 쓰며 튜닝 계수가 없습니다.
-
-```
-w0 = +L0 +L1 +L2
-w1 = -L0 +L1 -L2
-w2 = +L0 -L1 -L2
-w3 = -L0 -L1 +L2
-```
-
-수신단은 (1/4)·H₄ 역변환만으로 3개 레인을 복원합니다. 구조적으로 직교 리던던시가 확보되므로 별도 학습이나 계수 적응이 필요 없습니다. 4개 wire 공통 gain 단으로 진폭을 정규화하고, fixed-point round/shift/clip으로 오버플로우를 막았습니다.
-
-기존 DMT TX 데이터패스(Bit loader → Power loader → PS-IFFT → Shift-mux → CP insertion → Sync insertion → Zero padding)에 인코더를 끼워 넣어 3-lane TX 파이프라인을 완성했고, MATLAB 시뮬레이션과 **bit-exact 일치**를 확인했습니다.
+Die 1의 DSP TX가 적응형 bit/power loading으로 7개 lane을 만들고, 인코더가 이를 8개 wire로 확산합니다. 8번째는 redundancy lane입니다. Die 2에서는 clipping detection이 각 wire의 포화 여부를 판단해, 정상 구간에서는 디코더 출력을, 포화 구간에서는 raw 수신값을 선택하도록 MUX를 제어합니다. 클리핑이 디코딩 오류로 번지는 것을 막는 구조입니다.
 
 ---
 
-## 2. 단일 레인 DMT DSP RTL
+## 2. 3-lane 4-wire 인코더 · 디코더
+
+![3L4W architecture](figures/arch-3l4w.png)
+
+N = 3 구성입니다. 데이터 레인 3개에 redundancy lane 1개를 더해 wire 4개로 보내고, 수신단이 디지털 영역에서 되돌리면서 **wire에 공통으로 실린 상관 잡음을 함께 제거**합니다.
+
+### 두 가지 스킴 — WHT와 NP1
+
+`TX.enc_scheme_sel`로 고릅니다. 0 = WHT, 1 = NP1.
+
+**인코딩 (3 lane → 4 wire)**
+
+| wire | WHT (E = H₄(2:4,:)ᵀ) | NP1 (R = 0.6) |
+|---|---|---|
+| w1 | L1 + L2 + L3 | L1 |
+| w2 | −L1 + L2 − L3 | L2 |
+| w3 | L1 − L2 − L3 | L3 |
+| w4 | −L1 − L2 + L3 | clip(round(0.6 · (L1+L2+L3))) |
+
+WHT는 Hadamard의 zero-sum 3개 행으로 확산하고, NP1은 데이터 3레인을 그대로 보내면서 4번째에 R-가중 합을 실어 리던던시를 만듭니다.
+
+**디코딩 (4 wire → 3 lane)**
+
+| | WHT (¼ · H₄(2:4,:) · y) | NP1 (R = 0.6) |
+|---|---|---|
+| lane0 | (y1 − y2 + y3 − y4) / 4 | (y1 − 3y2 − 3y3 + 5y4) / 4 |
+| lane1 | (y1 + y2 − y3 − y4) / 4 | (−3y1 + y2 − 3y3 + 5y4) / 4 |
+| lane2 | (y1 − y2 − y3 + y4) / 4 | (−3y1 − 3y2 + y3 + 5y4) / 4 |
+
+**강점이 갈립니다.** WHT는 계수 합이 0이라 공통 잡음이 자동으로 소거되지만 클리핑 대응 장치가 없습니다. NP1은 redundancy wire로 복호하되 그 wire가 먼저 포화되므로, 포화 샘플은 raw lane으로 우회시켜 클리핑에 견딥니다.
+
+**R = 0.6을 고른 이유** — 5·R = 3이 되어 두 스킴 모두 **정수 계수 ÷4**로 정확히 복원됩니다. 곱셈기도, 역행렬 연산도 필요 없습니다.
+
+### RTL 구현
+
+두 스킴은 계수만 다른 같은 형태입니다.
+
+```
+lane = ( c1·y1 + c2·y2 + c3·y3 + c4·y4 ) / 4
+
+WHT : c ∈ {+1, −1}      → 덧셈 / 뺄셈만
+NP1 : c ∈ {1, 3, 5}     → ×3 = (x<<1)+x , ×5 = (x<<2)+x
+끝단 ÷4 = >>2
+```
+
+가중합 → ÷4 회로는 공유하고 **계수셋만 MUX로 선택**합니다. 일반 곱셈기를 쓰지 않습니다.
+
+**반올림을 한쪽으로 통일했습니다.** Σ를 4로 나누면 소수부가 남으므로 `(Σ + 2) >> 2`로 round-half-up 처리합니다. "+2"는 반 LSB를 더해 최근접 반올림 효과를 내는 것이고, WHT·NP1 두 경로에 같은 식을 씁니다. MATLAB `round()`는 round-half-away-from-zero라 음수 0.5-tie에서만 1 LSB가 갈리는데, sub-LSB 차이라 BER과 동기에는 영향이 없습니다.
+
+![3L4W front-end block diagram](figures/frontend-3l4w-block.png)
+
+RX front-end DSP입니다. ADC가 주는 offset binary를 MSB invert로 signed 12b로 바꾸고, WHT combine에서 ±1 가감산만으로 A₁~A₃를 만든 뒤 `(A+2)>>2`로 라운딩합니다. 다시 offset binary로 되돌려 RX DSP에 넘깁니다. valid 신호는 지연선으로 데이터와 정렬합니다. 이 슬라이스가 NumSignal(32 또는 64)만큼 병렬로 복제됩니다.
+
+### 상관 잡음 제거 확인 — ZCU208 실측
+
+loopback 채널에 상관 잡음을 임의로 주입하고, 디코더를 끄고(OFF) / NP1 / WHT 세 모드로 돌려 비교했습니다.
+
+<table>
+<tr>
+<td width="33%"><img src="figures/mode-off-lane2.jpg" alt="Decoder OFF"></td>
+<td width="33%"><img src="figures/mode-np1-lane2.jpg" alt="NP1 decoding"></td>
+<td width="33%"><img src="figures/mode-wht-lane0.jpg" alt="WHT decoding"></td>
+</tr>
+<tr>
+<td><b>OFF</b> · Lane 2 — 디코더 bypass. 성상이 형성되지 않습니다.</td>
+<td><b>NP1</b> · Lane 2 — 16-QAM 성상이 복원됩니다.</td>
+<td><b>WHT</b> · Lane 0 — 32-QAM 성상이 가장 뚜렷합니다.</td>
+</tr>
+</table>
+
+| 모드 | avg BER (BRAM 소스) | avg BER (TX DSP 소스) |
+|---|---|---|
+| OFF (디코더 bypass) | 1.61 × 10⁻¹ | 1.61 × 10⁻¹ |
+| NP1 | 3.86 × 10⁻³ | 4.37 × 10⁻³ |
+| **WHT** | **5.68 × 10⁻⁴** | **5.34 × 10⁻⁴** |
+
+디코더를 끄면 BER이 0.161로 통신이 성립하지 않고, WHT 복호를 켜면 5.68 × 10⁻⁴까지 내려갑니다. 상관 잡음이 zero-sum 계수합으로 소거된다는 것을 하드웨어에서 확인한 결과입니다.
+
+> ZCU208 실측은 연구실 공동 수행입니다. 이 페이지에 실은 본인 수행분은 3L4W 인코더·디코더와 front-end DSP의 RTL 설계입니다.
+
+---
+
+## 3. 단일 레인 DMT DSP RTL
 
 ![Single-lane DMT TRX datapath](figures/datapath-single-lane.png)
 
@@ -51,11 +114,15 @@ MATLAB에서 VHDL을 자동 생성하는 프레임워크를 만들어 per-tap �
 
 ---
 
-## 3. RFSoC 실시간 검증 환경
+## 4. RFSoC 실시간 검증 환경
 
 ![RFSoC verification block diagram](figures/rfsoc-verify-block.png)
 
 검증 대상(DUT)은 TX DSP · BIDI · RX DSP입니다. PC가 UART로 ZYNQ PS와 통신하고, GPIO로 BIDI를 제어합니다. TX 입력은 BRAM(16 kSa)의 시험 파형과 TX DSP 출력 중에서 고릅니다. 클럭 도메인은 제어 100 MHz, DSP 64 MHz, BIDI 16 MHz, 변환기 인터페이스 256 MHz로 나눴고, 32-to-8 / 8-to-32 FIFO로 폭을 맞췄습니다. DAC/ADC 실제 입출력은 14b·12b이지만 AXI-Stream 버스에 맞추려고 16b로 확장합니다.
+
+3L4W 구성에서는 wire마다 BRAM과 MUX를 하나씩 두어 4개 계통으로 늘리고, TX DSP 3개(3 lane + 1 redundancy)와 RX DSP 3개 사이에 3L4W front-end DSP를 끼웁니다. DAC/ADC는 각각 4채널 3.2 GS/s, 8 sample/clk이며 fabric은 400 MHz, DSP는 50 MHz로 돕니다.
+
+**4 wire를 differential로 쓴 이유** — DMT 신호는 Fs = 3.2 GS/s에서 0~1.6 GHz를 씁니다. 평가 보드의 single-ended 포트는 LF balun 2쌍(0.01~1.3 GHz)과 HF balun 2쌍(1.6~3.1 GHz)으로 나뉘어 4개 wire의 대역폭이 서로 달라집니다. 대역을 맞추려고 differential 포트를 썼습니다.
 
 ### 2보드 구성
 
@@ -76,11 +143,11 @@ MATLAB에서 VHDL을 자동 생성하는 프레임워크를 만들어 per-tap �
 
 ---
 
-## 4. 실시간 검증 결과
+## 5. 실시간 검증 결과
 
 ![RFSoC measurement results](figures/result-rfsoc-ber.png)
 
-ZCU111 2보드에서 단일 레인 DMT TX/RX DSP를 실시간 구동한 결과입니다.
+ZCU111 2보드에서 단일 레인 DMT TX/RX DSP를 loopback 채널로 실시간 구동한 결과입니다.
 
 | 항목 | 값 |
 |---|---|
@@ -93,13 +160,14 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ---
 
-## 5. 본인 수행 범위
+## 6. 본인 수행 범위
 
 수행한 항목입니다.
 
-- N-lane N-wire 구조 MATLAB 모델링, FEXT 상쇄 알고리즘과 전송 효율 정량 검증
-- 비트/파워 로딩을 포함한 DMT DSP RTL 설계 — 단일 레인 구현 완료
-- Walsh-Hadamard 기반 3L4W 인코더 설계 및 DMT TX 데이터패스 통합
+- N-lane N-wire 구조 MATLAB 모델링, 상관 잡음 상쇄 알고리즘과 전송 효율 정량 검증
+- WHT · NP1 두 스킴의 3L4W 인코더·디코더 설계, 계수 MUX 기반 공유 데이터패스와 `(Σ+2)>>2` 라운딩 통일
+- 3L4W RX front-end DSP RTL 설계 및 DMT TX/RX 데이터패스 통합
+- 비트/파워 로딩을 포함한 단일 레인 DMT DSP RTL 설계 — 32-way 128-tap, MDF 구조
 - MATLAB → VHDL 자동 생성 프레임워크 구축, fixed-point 모델과 bit-exact 대조
 - ZCU111 2보드 외부 클럭 동기화 실시간 검증 환경 구축 및 단일 레인 IP 하드웨어 검증
 
@@ -110,11 +178,11 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ---
 
-## 6. 다음 단계
+## 7. 다음 단계
 
 | 항목 | 내용 |
 |---|---|
-| 멀티 레인 RTL 통합 | 7L8W 인코더·디코더 블록 통합, 레인 간 FEXT 상쇄 로직 RTL 구현 |
+| 멀티 레인 확장 | 3L4W에서 7L8W로 인코더·디코더 확장, 레인 간 간섭 상쇄 로직 RTL 구현 |
 | 2보드 실시간 검증 | ISI 보드를 적용해 다양한 채널 조건에서 부채널별 로딩 동작과 인접 레인 간섭 상쇄를 목표 BER 기준으로 분석 |
 | 논리 합성 분석 | Synopsys Design Compiler로 면적·전력·타이밍 분석, critical path 확인, netlist에 SDF를 적용한 타이밍 시뮬레이션 |
 
@@ -127,4 +195,4 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ## 자료 출처
 
-figure는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림 1~6입니다. 3L4W 인코더 서술은 **미래기술육성사업 2026년 상반기 반기보고서**의 본인 수행분입니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.
+7L8W 구조도와 단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 본인이 작성한 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림 1~6입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식은 본인 발표자료 `NP1_강가영_발표자료.pptx`, 모드별 성상과 BER은 연구실 ZCU208 검증 기록에서 가져왔습니다. 상세 기록은 [`figure-sources.json`](figure-sources.json)에 있습니다.

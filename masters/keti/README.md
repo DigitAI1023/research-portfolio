@@ -2,7 +2,9 @@
 
 DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당과 FDE를 통해 주파수 선택적 채널에 대응합니다. **삼성 14 nm FinFET 공정으로 tape-out**했습니다.
 
-**사용 도구** — MATLAB (고정소수점 모델링 · SPI 제어 시퀀싱) · VHDL · ModelSim · **Cadence Xcelium** (post-simulation) · Synopsys Design Compiler · Keysight M8196A AWG
+**사용 도구** — MATLAB (고정소수점 모델링 · SPI 제어 시퀀싱) · VHDL · ModelSim · Cadence Xcelium (post-simulation) · Synopsys Design Compiler
+
+**측정 장비** — Keysight M8196A AWG · 샘플링 오실로스코프 · real-time 오실로스코프 · Total Phase Cheetah SPI Host Adapter
 
 ---
 
@@ -65,6 +67,15 @@ DMT_TRX8.pdf의 top copper, bottom copper, 상면 부품 표기 도면입니다.
 ![Boards](figures/boards.jpg)
 
 측정 발표자료 2페이지에서 추출한 실험실 전경과 보드 사진입니다. 원고 결과와의 세부 배선·측정 시점 일치 여부는 검토 중입니다.
+
+| 장비 | 역할 |
+|---|---|
+| Keysight M8196A AWG | TX / RX 외부 클럭 공급 (TX는 on-chip PLL과 선택 가능) |
+| 샘플링 오실로스코프 | 반복 파형 관측 — 아이 다이어그램·지터 |
+| Real-time 오실로스코프 | 단발 파형 캡처 — 프레임 단위 동작 확인 |
+| **Total Phase Cheetah** SPI Host Adapter | PC ↔ 칩 SPI 제어. 설정 시퀀스는 MATLAB으로 작성 |
+
+칩은 PCB에 wire-bonding해 특성을 측정했습니다. TX/RX DSP는 0.9 V, DAC/ADC는 0.8 V로 동작하며, RX 입력은 AC 결합에 common mode 250 mV입니다.
 
 ## 실측 결과
 

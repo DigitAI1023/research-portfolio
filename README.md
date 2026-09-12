@@ -111,9 +111,11 @@
 | RFMC500 / VFE-100 front-end card | 4-lane differential 구성 |
 | ISI · notch channel board | 채널 조건별 측정 |
 | **Keysight M8196A AWG** | 14 nm DMT TRX 실칩 외부 클럭 |
+| **샘플링 오실로스코프** | 14 nm 칩 실측 |
+| **Real-time 오실로스코프** | 14 nm 칩 실측 |
+| **Total Phase Cheetah SPI Host Adapter** | PC ↔ 칩 SPI 제어 (MATLAB 시퀀싱) |
 | VSG25A 신호발생기 | 2보드 외부 클럭 동기화 |
 | Phase shifter · Power splitter | 보드 간 기준 클럭 분배·위상 정렬 |
-| SPI adapter board | PC ↔ 칩 설정 (MATLAB 시퀀싱) |
 
 ### 공정
 

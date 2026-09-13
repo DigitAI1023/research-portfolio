@@ -2,7 +2,7 @@
 
 고속 유선 통신 DSP의 알고리즘 설계부터 RTL 구현, FPGA 실시간 검증, 실칩 측정까지. 그리고 아날로그 회로 설계와 full-custom layout.
 
-> 비공개 검토본. 공동 연구 결과와 개인 기여를 구분해 표기하며, 일부 측정 조건은 확인 중입니다.
+> 공동 연구 과제는 개인 기여 범위를 각 페이지에 구분해 표기했습니다.
 
 <br>
 
@@ -89,10 +89,10 @@
 | **RTL 검증** | ModelSim | KETI, On-chip BPL, 3L4W — FXP 모델과 bit-exact 대조 |
 | | Cadence Xcelium | KETI DMT TRX post-simulation |
 | | Xilinx Vivado | RFSoC 구현·ILA 캡처, LEGv8 CPU RTL 시뮬레이션 |
-| **합성 · Back-end** | Synopsys Design Compiler | KETI TRX, 28 nm PnR 실습, 2D FSM, LEGv8 CPU |
+| **합성 · Back-end** | Synopsys Design Compiler | KETI TRX, 3L4W 인터페이스, 28 nm PnR 실습, 2D FSM, LEGv8 CPU |
 | | Synopsys Formality | RTL ↔ netlist 등가 검증 |
 | | Synopsys PrimeTime | Pre-STA · Post-STA · PT-ECO |
-| | Synopsys IC Compiler | PnR — floorplan · powerplan · CTS · route · chip finish |
+| | Synopsys IC Compiler | PnR — floorplan · powerplan · CTS · route · chip finish (3L4W 인터페이스, 28 nm PnR 실습) |
 | | Synopsys StarRC | 기생 성분 추출 (SPEF) |
 | **커스텀 회로** | Cadence Virtuoso | LC VCO · BGR · CP-PLL (28 nm), Ring VCO (90 nm), Ring OSC (TSMC 28 nm) |
 | | Spectre ADE | transient · AC · S-parameter · PSS · pnoise · parametric sweep |

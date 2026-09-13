@@ -10,7 +10,7 @@
 
 과제의 최종 목표 구조는 7-lane 8-wire이지만, **실제 설계·검증과 tape-out은 3-lane 4-wire 구성으로 진행합니다.** 공정은 TSMC 28 nm입니다.
 
-**사용 도구** — MATLAB (모델링 · HDL 자동 생성) · VHDL · ModelSim · Xilinx Vivado · Tcl · RFSoC ZCU111 / ZCU208 · Synopsys Design Compiler (예정)
+**사용 도구** — MATLAB (모델링 · HDL 자동 생성) · VHDL · ModelSim · Xilinx Vivado · Tcl · RFSoC ZCU111 / ZCU208 · Synopsys Design Compiler · IC Compiler (TSMC 28 nm 합성 · PnR)
 
 ---
 
@@ -219,7 +219,7 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 | 항목 | 내용 |
 |---|---|
 | **Tape-out** | 3L4W 구성으로 **TSMC 28 nm** tape-out |
-| 논리 합성 · PnR | Synopsys Design Compiler로 면적·전력·타이밍 분석, critical path 확인, netlist에 SDF를 적용한 타이밍 시뮬레이션 |
+| 논리 합성 · PnR | Synopsys Design Compiler로 면적·전력·타이밍 분석 및 critical path 확인, netlist에 SDF를 적용한 타이밍 시뮬레이션, IC Compiler로 TSMC 28 nm PnR |
 | 2보드 실시간 검증 | ISI 보드를 적용해 다양한 채널 조건에서 부채널별 로딩 동작과 레인 간 상관 잡음 상쇄를 목표 BER 기준으로 분석 |
 
 ---

@@ -18,9 +18,9 @@ DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당�
 | DAC · ADC | 한양대학교 |
 | PLL · SPI | KETI |
 | PnR | 외주 |
-| PCB 보드 | 외주 |
+| PCB 보드 | KETI · 한양대학교 |
 
-PnR과 PCB는 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 제대로 협의하기 위해 back-end 흐름을 따로 익혔고, 그 과정은 [TSMC 28 nm Back-end Flow 실습](../pnr-28nm/README.md)에 정리했습니다.
+PnR은 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 제대로 협의하기 위해 back-end 흐름을 따로 익혔고, 그 과정은 [TSMC 28 nm Back-end Flow 실습](../pnr-28nm/README.md)에 정리했습니다.
 
 > 아래 성능은 위 블록들이 합쳐진 **시스템 전체 결과**입니다.
 >
@@ -50,7 +50,7 @@ TX는 비트·전력 로딩, IFFT, CP 및 동기화 시퀀스 삽입을 수행�
 
 ![PCB component legend](figures/pcb-page-6.png)
 
-DMT_TRX8.pdf의 top copper, bottom copper, 상면 부품 표기 도면입니다. PDF의 아래쪽 여백을 제외해 렌더링했습니다. 함께 제공된 DMT_TRX8.brd와 DMT_TX_RX.DSN은 PCB 원본 설계 자료로 보관하며, 본 페이지에서는 도면을 통해 보드 구성을 보여줍니다. PCB 설계 담당 범위는 별도 확인이 필요합니다.
+DMT_TRX8.pdf의 top copper, bottom copper, 상면 부품 표기 도면입니다. PDF의 아래쪽 여백을 제외해 렌더링했습니다. 함께 제공된 DMT_TRX8.brd와 DMT_TX_RX.DSN은 PCB 원본 설계 자료로 보관하며, 본 페이지에서는 도면을 통해 보드 구성을 보여줍니다. 보드 설계는 KETI와 한양대학교에서 진행했습니다.
 
 ## 모델링과 RTL 검증
 

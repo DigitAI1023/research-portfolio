@@ -115,6 +115,16 @@ Regulating Amplifier가 `Vcp`를 받아 `Vc`를 만들고, 이 `Vc`가 Ring VCO�
 
 Vc ripple은 두 조건이 6.197 mV와 6.268 mV로 거의 같은데 jitter는 16배 차이납니다. 잡음 주기가 길수록 VCO가 같은 방향의 위상 오차를 더 오래 누적하기 때문입니다. **Vc ripple만으로는 jitter를 예측할 수 없고 잡음의 주파수까지 함께 봐야 한다**는 점을 확인했습니다.
 
+## 추가 비교: 작은 공급 잡음에서의 eye
+
+| ±1 mV, 1 MHz | ±1 mV, 100 MHz |
+|---|---|
+| ![작은 잡음 1MHz eye](figures/p11-3.png) | ![작은 잡음 100MHz eye](figures/p17-3.png) |
+
+VCP=1 V, 관측 구간 5 ns~2 µs의 시뮬레이션입니다. 보고서의 RMS jitter는 각각 3.784 ps와 1.439 ps입니다. 위의 ±50 mV 결과와 비교해 진폭 및 주파수 영향을 함께 확인합니다.
+
+출처: `C135001_강가영_stu56_Final Poject.pdf`, pp. 11, 17. 이 페이지의 전압·주파수·jitter는 회로 시뮬레이션 결과입니다.
+
 ---
 
 [← 학부 과정](../README.md) · [자료 출처](figure-sources.json)

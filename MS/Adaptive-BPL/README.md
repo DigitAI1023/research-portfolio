@@ -264,6 +264,20 @@ TX APPLY가 지시한 `b_n`과 RUN 심볼에서 역으로 추정한 `b_n`을 31�
 
 모든 figure는 `On-Chip Adaptive BPL_강가영_발표자료.pptx`(2026-09-11)와 `figures_thesis/`(2026-09-04 ~ 09-06)에서 가져왔습니다. 슬라이드 번호와 원본 경로는 [`figure-sources.json`](figure-sources.json)에 기록했습니다.
 
+## 추가 검증: 설정 버스와 실제 로딩의 연결
+
+| TX APPLY bus | RX APPLY bus |
+|---|---|
+| ![TX 기대값과 캡처값](figures/s77-0.png) | ![RX 기대값과 캡처값](figures/s77-1.png) |
+
+발표자료 77페이지의 기대값·캡처값 비교입니다. 설정 버스에 기록된 값과 실제 데이터패스 반영을 나누어 확인합니다.
+
+| 로딩 엔진과 TX symbol | 31개 부채널 차이 |
+|---|---|
+| ![BPL과 TX 로딩 비교](figures/s78-0.png) | ![31채널 로딩 차이](figures/s78-1.png) |
+
+78페이지의 해당 실행에서 31개 부채널의 로딩 차이가 0입니다. 이 결과의 검증 범위는 해당 관측점·조건입니다.
+
 ---
 
 [← 석사 연구](../README.md)

@@ -233,6 +233,16 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 단일 레인 datapath, RFSoC 검증 블록도, 2보드 셋업, 측정 결과는 **2026년도 석사과정생연구장려금 1차년도 연차보고서**의 그림입니다. 3L4W front-end 블록도와 인코딩·디코딩 수식, OFF/NP1/WHT 모드별 RTL·ZCU208 검증 결과는 본인이 설계한 RX DSP와 디코더를 대상으로 수행한 것입니다. 각 figure의 출처는 [`figure-sources.json`](figure-sources.json)에 기록했습니다.
 
+## 개발 과정: 32-tap 확장 시 RTL 디버깅
+
+![CP 제거 indexing 검증](figures/np1-s23-0.png)
+
+`NP1_강가영_발표자료.pptx` 21–23페이지의 개발 기록입니다. tap ratio가 1인 경우의 FIFO indexing 문제를 명시적 read/write pointer로 수정하고, 40 sample에서 앞쪽 CP 8 sample을 제거해 32 sample이 출력되는지 확인했습니다.
+
+![Shift 설정값 적용](figures/np1-s29-0.png)
+
+28–29페이지는 configuration address 폭 변화에 따라 shift 값 위치가 달라지는 문제를 다룹니다. 고정 비트 위치를 주소 폭에 따른 파라미터로 바꾼 뒤 설정 적용을 확인했습니다. 위 그림은 개발 중 RTL 검증이며 앞의 ZCU208 실측 결과와 구분합니다.
+
 ---
 
 [← 석사 연구](../README.md)

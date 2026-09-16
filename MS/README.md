@@ -4,12 +4,12 @@ DGIST CASSP Lab. 고속 유선 통신 DSP의 알고리즘 설계부터 RTL 구�
 
 | 프로젝트 | 분야 | 대표 결과 |
 |---|---|---|
-| [KETI DMT Transceiver](keti/README.md) | 14 nm FinFET · 설계 → tape-out → 실측 | loopback **51 Gb/s** · 551 mW |
-| [On-chip Adaptive Bit/Power Loading](adaptive-bpl/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
-| [광대역 칩간 인터페이스](samsung-nrf/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
-| [RFSoC 하드웨어 검증](rfsoc/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
-| [28 nm Back-end Flow 실습](pnr-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
-| [Mixed-Signal 회로 설계](mixed-signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
+| [KETI DMT Transceiver](KETI/README.md) | 14 nm FinFET · 설계 → tape-out → 실측 | loopback **51 Gb/s** · 551 mW |
+| [On-chip Adaptive Bit/Power Loading](Adaptive-BPL/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
+| [광대역 칩간 인터페이스](Samsung-NRF/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
+| [RFSoC 하드웨어 검증](RFSoC/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
+| [28 nm Back-end Flow 실습](PnR-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
+| [Mixed-Signal 회로 설계](Mixed-Signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
 
 ---
 

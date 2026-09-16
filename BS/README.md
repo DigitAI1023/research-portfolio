@@ -4,12 +4,12 @@
 
 | 프로젝트 | 분야 | 대표 결과 |
 |---|---|---|
-| [Regulated-Supply 8-Phase Ring VCO](ring-vco/README.md) | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
-| [2D FSM 기반 Stochastic Computing](stochastic-computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선**, IEEE TENCON 발표 |
-| [LEGv8 ARM CPU EX단 최적화](legv8-cpu/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
-| [1-bit Full Adder Layout](full-adder-layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm², worst-case delay 분석 |
-| [2-Stage Cascode Amplifier](amplifier-design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
-| [DGIST 연구 인턴](dgist-internship/README.md) | PCB · full-custom | RF PCB 설계, Ring OSC **PEX 9.35 → 4.75 GHz** |
+| [Regulated-Supply 8-Phase Ring VCO](Ring-VCO/README.md) | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
+| [2D FSM 기반 Stochastic Computing](Stochastic-Computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선**, IEEE TENCON 발표 |
+| [LEGv8 ARM CPU EX단 최적화](LEGv8-CPU/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
+| [1-bit Full Adder Layout](Full-Adder-Layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm², worst-case delay 분석 |
+| [2-Stage Cascode Amplifier](Amplifier-Design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
+| [DGIST 연구 인턴](DGIST-Internship/README.md) | PCB · full-custom | RF PCB 설계, Ring OSC **PEX 9.35 → 4.75 GHz** |
 
 ---
 
@@ -30,7 +30,7 @@ IEEE 게재 논문의 PDF는 저작권 때문에 이 저장소에 포함하지 �
 | 제목 | 발표 | 저자 | 원본 |
 |---|---|---|---|
 | *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON, 게재 · 포스터 발표 | Jiho Kim, **Gayoung Kang**, Youngmin Kim | IEEE Xplore |
-| *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회, 포스터 발표 | 김은수, **강가영** (책임저자 허서원) | [📄](legv8-cpu/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
+| *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회, 포스터 발표 | 김은수, **강가영** (책임저자 허서원) | [📄](LEGv8-CPU/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
 
 ---
 

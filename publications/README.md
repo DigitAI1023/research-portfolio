@@ -5,7 +5,7 @@
 | 1 | *Approximation of Cross Correlation for Energy-Efficient Synchronization of Discrete Multitone Wireline Transceivers* | 2025 IEEE ICCE-Asia | 7인 중 5저자 | 발표 완료 | IEEE Xplore |
 | 2 | *A 51 Gb/s DAC/ADC-Based Discrete Multitone Wireline Transceiver Datapath in 14 nm FinFET* | **IEEE ISSCC 2027 투고** | 15인 중 6저자 | 심사 중 | 비공개 |
 | 3 | *Practical 2D FSM for Stochastic Computing with Improved Hardware Efficiency and Accuracy* | IEEE TENCON | 3인 중 2저자 | 게재 · 포스터 발표 | IEEE Xplore |
-| 4 | *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회 | 2인 중 2저자 | 발표 완료 (포스터) | [📄](../undergraduate/legv8-cpu/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
+| 4 | *Mitigating Data Hazards in LEGv8 ARM Processor Using Geometric Approximation Speed Unit* | 2024 반도체공학회 하계학술대회 | 2인 중 2저자 | 발표 완료 (포스터) | [📄](../BS/LEGv8-CPU/paper/2024_반도체공학회_하계학술대회_포스터.pdf) |
 
 > 2번 원고는 심사 중이므로 채택된 성과로 기재하지 않습니다.
 
@@ -134,7 +134,7 @@ Notch 채널은 1.8 GHz와 5.5 GHz에 깊은 감쇠가 있는 multi-drop 보드�
 
 RX·TX DSP 모두 FFT / IFFT 코어가 면적의 대부분을 차지합니다.
 
-설계·검증·측정 내용은 [KETI DMT Transceiver 페이지](../masters/keti/README.md)에 정리되어 있습니다.
+설계·검증·측정 내용은 [KETI DMT Transceiver 페이지](../MS/KETI/README.md)에 정리되어 있습니다.
 
 ---
 
@@ -144,8 +144,8 @@ RX·TX DSP 모두 FFT / IFFT 코어가 면적의 대부분을 차지합니다.
 
 | 논문 | 프로젝트 페이지 |
 |---|---|
-| *Practical 2D FSM for Stochastic Computing…* (IEEE TENCON) | [2D FSM 기반 Stochastic Computing](../undergraduate/stochastic-computing/README.md) |
-| *Mitigating Data Hazards in LEGv8 ARM Processor…* (2024 반도체공학회) | [LEGv8 ARM CPU EX단 최적화](../undergraduate/legv8-cpu/README.md) |
+| *Practical 2D FSM for Stochastic Computing…* (IEEE TENCON) | [2D FSM 기반 Stochastic Computing](../BS/Stochastic-Computing/README.md) |
+| *Mitigating Data Hazards in LEGv8 ARM Processor…* (2024 반도체공학회) | [LEGv8 ARM CPU EX단 최적화](../BS/LEGv8-CPU/README.md) |
 
 ---
 

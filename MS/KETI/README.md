@@ -20,7 +20,7 @@ DAC/ADC 기반 DMT 송수신기. 채널별 SNR에 따른 비트·전력 할당�
 | PnR | 외주 |
 | PCB 보드 | KETI · 한양대학교 |
 
-PnR은 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 제대로 협의하기 위해 back-end 흐름을 따로 익혔고, 그 과정은 [TSMC 28 nm Back-end Flow 실습](../pnr-28nm/README.md)에 정리했습니다.
+PnR은 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 제대로 협의하기 위해 back-end 흐름을 따로 익혔고, 그 과정은 [TSMC 28 nm Back-end Flow 실습](../PnR-28nm/README.md)에 정리했습니다.
 
 > 아래 성능은 위 블록들이 합쳐진 **시스템 전체 결과**입니다.
 >
@@ -96,5 +96,5 @@ Notch 채널의 SNR, 로딩 분포와 constellation을 함께 제시합니다.
 Loopback 기준 551 mW, 10.8 pJ/b를 보고합니다.
 
 
-[RFSoC 단계별 검증](../rfsoc/README.md) · [← 석사 연구](../README.md)
+[RFSoC 단계별 검증](../RFSoC/README.md) · [← 석사 연구](../README.md)
 

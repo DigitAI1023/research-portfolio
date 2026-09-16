@@ -6,21 +6,21 @@
 
 <br>
 
-## 📂 [석사 과정](masters/README.md) — DGIST CASSP Lab
+## 📂 [석사 과정](MS/README.md) — DGIST CASSP Lab
 
 | 프로젝트 | 분야 | 대표 결과 |
 |---|---|---|
-| [KETI DMT Transceiver](masters/keti/README.md) | 14 nm FinFET · 설계 → tape-out → 실측 | loopback **51 Gb/s** · 551 mW |
-| [On-chip Adaptive Bit/Power Loading](masters/adaptive-bpl/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
-| [광대역 칩간 인터페이스](masters/samsung-nrf/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
-| [RFSoC 하드웨어 검증](masters/rfsoc/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
-| [28 nm Back-end Flow 실습](masters/pnr-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
-| [Mixed-Signal 회로 설계](masters/mixed-signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
+| [KETI DMT Transceiver](MS/KETI/README.md) | 14 nm FinFET · 설계 → tape-out → 실측 | loopback **51 Gb/s** · 551 mW |
+| [On-chip Adaptive Bit/Power Loading](MS/Adaptive-BPL/README.md) | 졸업연구 · 시뮬레이터 → RTL → FPGA | FXP BER **2.16 × 10⁻⁵** |
+| [광대역 칩간 인터페이스](MS/Samsung-NRF/README.md) | 삼성미래기술 · NRF · TSMC 28 nm | 디코더 ON/OFF **BER 300배** |
+| [RFSoC 하드웨어 검증](MS/RFSoC/README.md) | ZCU111 · 단계별 검증 방법론 | 최대 **128-QAM** 성상 확인 |
+| [28 nm Back-end Flow 실습](MS/PnR-28nm/README.md) | DC → PnR → sign-off 전 과정 | LVS clean · **WNS/TNS 0** |
+| [Mixed-Signal 회로 설계](MS/Mixed-Signal/README.md) | 수업 프로젝트 · 28 nm | LC VCO FoM **186.68 dBc/Hz** |
 
 <table>
 <tr>
-<td width="50%"><img src="masters/keti/figures/layout-die.png" alt="KETI chip"></td>
-<td width="50%"><img src="masters/adaptive-bpl/figures/sys-feedback.png" alt="BPL loop"></td>
+<td width="50%"><img src="MS/KETI/figures/layout-die.png" alt="KETI chip"></td>
+<td width="50%"><img src="MS/Adaptive-BPL/figures/sys-feedback.png" alt="BPL loop"></td>
 </tr>
 <tr>
 <td>14 nm FinFET DMT TRX — chip layout과 die</td>
@@ -32,21 +32,21 @@
 
 ---
 
-## 📂 [학부 과정](undergraduate/README.md) — 홍익대학교 전자전기공학부
+## 📂 [학부 과정](BS/README.md) — 홍익대학교 전자전기공학부
 
 | 프로젝트 | 분야 | 대표 결과 |
 |---|---|---|
-| [Regulated-Supply 8-Phase Ring VCO](undergraduate/ring-vco/README.md) | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
-| [2D FSM 기반 Stochastic Computing](undergraduate/stochastic-computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선** · IEEE TENCON |
-| [LEGv8 ARM CPU EX단 최적화](undergraduate/legv8-cpu/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
-| [1-bit Full Adder Layout](undergraduate/full-adder-layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm² |
-| [2-Stage Cascode Amplifier](undergraduate/amplifier-design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
-| [DGIST 연구 인턴](undergraduate/dgist-internship/README.md) | PCB · full-custom | Ring OSC **PEX 9.35 → 4.75 GHz** |
+| [Regulated-Supply 8-Phase Ring VCO](BS/Ring-VCO/README.md) | 아날로그 · CMOS 90 nm | supply ripple **100 mV → 6.27 mV** |
+| [2D FSM 기반 Stochastic Computing](BS/Stochastic-Computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선** · IEEE TENCON |
+| [LEGv8 ARM CPU EX단 최적화](BS/LEGv8-CPU/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
+| [1-bit Full Adder Layout](BS/Full-Adder-Layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm² |
+| [2-Stage Cascode Amplifier](BS/Amplifier-Design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
+| [DGIST 연구 인턴](BS/DGIST-Internship/README.md) | PCB · full-custom | Ring OSC **PEX 9.35 → 4.75 GHz** |
 
 <table>
 <tr>
-<td width="50%"><img src="undergraduate/ring-vco/figures/vco-system.png" alt="Ring VCO"></td>
-<td width="50%"><img src="undergraduate/dgist-internship/figures/ro-layout.png" alt="Ring OSC layout"></td>
+<td width="50%"><img src="BS/Ring-VCO/figures/vco-system.png" alt="Ring VCO"></td>
+<td width="50%"><img src="BS/DGIST-Internship/figures/ro-layout.png" alt="Ring OSC layout"></td>
 </tr>
 <tr>
 <td>Regulated-Supply 8-Phase Ring VCO — CMOS 90 nm</td>

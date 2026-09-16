@@ -226,8 +226,8 @@ DSP datapath 로직이 하드웨어에서 안정적으로 동작함을 확인했
 
 ## 관련 페이지
 
-- [On-chip Adaptive Bit/Power Loading](../adaptive-bpl/README.md) — 이 과제의 bit/power loading을 칩 내부 폐루프로 옮긴 졸업연구
-- [RFSoC 하드웨어 검증](../rfsoc/README.md)
+- [On-chip Adaptive Bit/Power Loading](../Adaptive-BPL/README.md) — 이 과제의 bit/power loading을 칩 내부 폐루프로 옮긴 졸업연구
+- [RFSoC 하드웨어 검증](../RFSoC/README.md)
 
 ## 자료 출처
 

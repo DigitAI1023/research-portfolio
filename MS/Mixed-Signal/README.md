@@ -66,7 +66,7 @@ TC가 0이 되려면 PTAT 기울기(저항비 `L = R₂/R₁`)와 CTAT 기울기
 
 ## 2. NMOS Cross-Coupled LC VCO — 10 GHz
 
-학부에서 설계한 [Ring VCO](../../undergraduate/ring-vco/README.md)와 달리, LC tank를 쓰면 위상잡음이 크게 좋아지는 대신 주파수 가변 범위가 좁아집니다. 10 GHz를 목표로 설계했습니다.
+학부에서 설계한 [Ring VCO](../../BS/Ring-VCO/README.md)와 달리, LC tank를 쓰면 위상잡음이 크게 좋아지는 대신 주파수 가변 범위가 좁아집니다. 10 GHz를 목표로 설계했습니다.
 
 ### 2.1 인덕터 — Q-factor 검증
 

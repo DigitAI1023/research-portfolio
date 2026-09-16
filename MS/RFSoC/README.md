@@ -128,5 +128,5 @@ KETI 발표자료 23페이지의 BER counter 기록을 24페이지 scanner 결�
 
 각 그림의 출처는 본문에 파일명과 슬라이드 번호로 표시했습니다.
 
-[KETI 프로젝트](../keti/README.md) · [← 석사 연구](../README.md)
+[KETI 프로젝트](../KETI/README.md) · [← 석사 연구](../README.md)
 

@@ -257,8 +257,8 @@ TX APPLY가 지시한 `b_n`과 RUN 심볼에서 역으로 추정한 `b_n`을 31�
 
 ## 관련 페이지
 
-- [RFSoC 하드웨어 검증 과정](../rfsoc/README.md)
-- [KETI DMT Transceiver](../keti/README.md)
+- [RFSoC 하드웨어 검증 과정](../RFSoC/README.md)
+- [KETI DMT Transceiver](../KETI/README.md)
 
 ## 자료 출처
 

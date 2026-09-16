@@ -24,7 +24,7 @@ PnR은 외주로 진행됐습니다. 넘겨줄 RTL의 제약과 핀 배치를 �
 
 > 아래 성능은 위 블록들이 합쳐진 **시스템 전체 결과**입니다.
 >
-> 이 페이지의 figure와 수치는 **IEEE ISSCC 2027 투고 원고**에서 가져왔습니다. ASSCC 2026에 먼저 투고했으나 채택되지 않았고, 보강해 ISSCC 2027에 재투고한 **심사 중** 원고입니다. 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.
+> 자세한 내용은 [논문 · 발표 페이지](../../publications/README.md)를 참고하세요.
 
 ## 설계 IP 구조
 
@@ -50,8 +50,7 @@ TX는 비트·전력 로딩, IFFT, CP 및 동기화 시퀀스 삽입을 수행�
 
 ![PCB component legend](figures/pcb-page-6.png)
 
-DMT_TRX8.pdf의 top copper, bottom copper, 상면 부품 표기 도면입니다. PDF의 아래쪽 여백을 제외해 렌더링했습니다. 함께 제공된 DMT_TRX8.brd와 DMT_TX_RX.DSN은 PCB 원본 설계 자료로 보관하며, 본 페이지에서는 도면을 통해 보드 구성을 보여줍니다. 보드 설계는 KETI와 한양대학교에서 진행했습니다.
-
+TX/RX PCB 보드의 top copper, bottom copper, 상면 부품 표기 도면입니다. 본 페이지에서는 도면을 통해 보드 구성을 보여줍니다.
 ## 모델링과 RTL 검증
 
 1차년도 보고서 16–18·23페이지는 고정소수점 모델링, power-loader 정밀도 검토 및 TX/RX RTL 검증을 설명합니다. 초기 설계의 시뮬레이션 결과와 이후 원고의 실칩 측정을 구분해 개발 과정으로 연결합니다.
@@ -66,7 +65,7 @@ DMT_TRX8.pdf의 top copper, bottom copper, 상면 부품 표기 도면입니다.
 
 ![Boards](figures/boards.jpg)
 
-측정 발표자료 2페이지에서 추출한 실험실 전경과 보드 사진입니다. 원고 결과와의 세부 배선·측정 시점 일치 여부는 검토 중입니다.
+측정 발표자료 2페이지에서 추출한 실험실 전경과 보드 사진입니다. 
 
 | 장비 | 역할 |
 |---|---|
@@ -90,15 +89,12 @@ Loopback의 constellation과 notch 보드·채널 응답입니다. 1.8 GHz와 5.
 
 ![Notch SNR loading constellation](figures/notch-results.png)
 
-Notch 채널의 SNR, 로딩 분포와 constellation을 함께 제시합니다. 원문은 일부 constellation BER을 EVM으로 추정했다고 기술하므로 aggregate BER과 구분합니다.
+Notch 채널의 SNR, 로딩 분포와 constellation을 함께 제시합니다.
 
 ![Power](figures/power.png)
 
-최종 원고는 loopback 기준 551 mW, 10.8 pJ/b를 보고합니다.
+Loopback 기준 551 mW, 10.8 pJ/b를 보고합니다.
 
-## 근거
-
-ISSCC2027_DMT.docx 및 ISSCC2027_Figures.docx 본문·Fig. 1–7. 실측 사진: 2509_DMT_TRX_Measurement_V1.pptx, slide 2.
 
 [RFSoC 단계별 검증](../rfsoc/README.md) · [← 석사 연구](../README.md)
 

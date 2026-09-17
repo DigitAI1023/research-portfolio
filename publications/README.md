@@ -46,6 +46,12 @@ flowchart LR
  X --> A["일치 개수 누적"] --> C["Threshold 비교"] --> P["Frame / CP 시작점 검출"]
 ```
 
+| 동기화 시퀀스와 수신 신호 | 일반 상관과 sign-sign 상관 |
+|---|---|
+| ![동기화 신호](figures/icce-sync-signals.png) | ![두 상관 결과 비교](figures/icce-xcorr-compare.png) |
+
+예시 파형에서 두 방식은 **동일한 peak index 504**를 찾습니다. 단일 예시의 검출 일치이며, 모든 채널 조건의 오류율을 보장하지는 않습니다.
+
 동기화 시퀀스로는 **Zadoff-Chu 수열의 실수부를 8-bit로 양자화**해 썼습니다. 주파수 영역에서 크기가 평탄해 검출이 안정적이기 때문입니다.
 
 ### 성능 지표

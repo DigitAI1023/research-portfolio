@@ -25,9 +25,13 @@ BGR(기준전압 생성기), LC VCO, Charge-Pump PLL을 각각 설계하고 시�
 </tr>
 <tr>
 <td>동작 원리 — Q₁ : Q₂ 면적비를 1 : n으로 두면 두 BJT의 V_BE 차이가 V_T·ln n 이 됩니다.</td>
-<td>설계한 회로 — 전류 미러(M₃~M₅), OP Amp, BJT 3개(Q₁, Q₂, Q₃)와 저항 R₁·R₂.</td>
+<td>기준 회로 구조 — 전류 미러(M₃~M₅), OP Amp, BJT 3개(Q₁, Q₂, Q₃)와 저항 R₁·R₂.</td>
 </tr>
 </table>
+
+![설계한 BGR schematic](figures/bgr-schematic-virtuoso.png)
+
+위 구조를 Virtuoso에서 그린 회로입니다. `pch_18_mac` 전류 미러를 4u/2u·m/nf = 1/4로 두고, OTA가 VBE1과 VY를 묶습니다. `pnp2` 소자는 Q1 : Q0 = 1 : 8 면적비이며, R₁ = 4.7 kΩ, R₀ = 4.7 kΩ × L로 저항비 L을 파라미터로 잡아 스윕할 수 있게 했습니다.
 
 ```
 VREF = V_BE3 + (R2 / R1) · V_T · ln(n)
@@ -106,13 +110,17 @@ VREF가 이론값 1.25 V에 가장 가까운 설정과 **온도 변화가 가장
 
 ![LC VCO schematic](figures/lcvco-schematic.png)
 
+![Start-up transient](figures/lcvco-startup.jpg)
+
+잡음으로 기동해 **약 5 ns 안에 정상상태 진폭**에 듭니다. 위는 0~130 ns 전 구간이고, 5 ns 지점에 marker를 두었습니다.
+
 <table>
 <tr>
-<td width="50%"><img src="figures/lcvco-transient.png" alt="Transient"></td>
+<td width="50%"><img src="figures/lcvco-transient.png" alt="Steady state"></td>
 <td width="50%"><img src="figures/lcvco-pss.png" alt="PSS"></td>
 </tr>
 <tr>
-<td><b>Transient</b> — 잡음으로 기동해 약 5 ns 안에 정상상태에 듭니다.</td>
+<td><b>정상상태</b> — 141~145 ns 구간을 확대한 차동 출력 VOUTP·VOUTN입니다.</td>
 <td><b>PSS</b> — 기본파가 <b>9.94225 GHz</b>. 목표 10 GHz에 근접하며 LC tank가 의도대로 공진합니다.</td>
 </tr>
 </table>

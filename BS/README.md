@@ -8,7 +8,7 @@
 | [2D FSM 기반 Stochastic Computing](Stochastic-Computing/README.md) | 디지털 · 학부연구생 | FoM **1.37× 개선**, IEEE TENCON 발표 |
 | [LEGv8 ARM CPU EX단 최적화](LEGv8-CPU/README.md) | 디지털 · 45 nm | EX stage **6.71 → 4.88 ns** |
 | [1-bit Full Adder Layout](Full-Adder-Layout/README.md) | Layout · CMOS 90 nm | 6.8 × 4 µm², worst-case delay 분석 |
-| [2-Stage Cascode Amplifier](Amplifier-Design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 실측 **51.0** |
+| [2-Stage Cascode Amplifier](Amplifier-Design/README.md) | 아날로그 · 이산소자 | 목표 gain 51 → 시뮬레이션 **51.0** |
 | [DGIST 연구 인턴](DGIST-Internship/README.md) | PCB · full-custom | RF PCB 설계, Ring OSC **PEX 9.35 → 4.75 GHz** |
 
 ---

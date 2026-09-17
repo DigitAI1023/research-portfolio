@@ -97,15 +97,17 @@ Sum은 Cout을 받아 만들어지므로 Sum delay가 Cout delay 위에 얹힙�
 
 ## 5. 2-bit Adder sizing 개선
 
-![개선한 2bit layout](figures/r02-p11-1.png)
+| Transistor sizing 변경 | 개선 후 layout |
+|---|---|
+| ![Sizing 변경](figures/r02-p11-0.jpg) | ![개선한 2bit layout](figures/r02-p11-1.png) |
 
 | Critical-path 비교 | 기존 | 개선 후 |
 |---|---:|---:|
 | 최종 Sum delay 범위 | 57–61 ps | 47–56 ps |
 | 동일 입력별 감소량 | — | 5–11 ps |
 
-출처: `C135001_강가영_CAD2.pdf`, pp. 11–14. 동일 입력 조건의 transient simulation 비교입니다. 별도 제작·실측 성과로 표시하지 않습니다.
+동일 입력 조건의 transient simulation 비교입니다.
 
 ---
 
-[← 학부 과정](../README.md) · [자료 출처](figure-sources.json)
+[← 학부 과정](../README.md)

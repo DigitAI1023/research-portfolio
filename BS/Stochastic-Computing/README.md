@@ -97,4 +97,4 @@ FoM은 전력 × 면적 × 오차로, 낮을수록 좋습니다. 4×4 구성이 
 
 ---
 
-[← 학부 과정](../README.md) · [자료 출처](figure-sources.json)
+[← 학부 과정](../README.md)

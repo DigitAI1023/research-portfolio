@@ -62,6 +62,18 @@ TC가 0이 되려면 PTAT 기울기(저항비 `L = R₂/R₁`)와 CTAT 기울기
 
 **저항의 절대값이 아니라 비율이 TC를 결정**합니다. 따라서 R₁과 R₂를 같은 재질·같은 단위소자(m = 1)로 구성해 공정 변동에서 비율이 함께 움직이도록 했습니다. 이렇게 하면 절대값이 틀어져도 TC는 유지됩니다.
 
+### CTAT 가중치와 온도 sweep
+
+| CTAT 소자 비율별 온도 기울기 | PTAT branch 전류 |
+|---|---|
+| ![CTAT 비율별 온도 기울기](figures/bgr-ctat-ratio.jpg) | ![PTAT branch 전류](figures/bgr-ptat-temp.jpg) |
+
+VREF가 이론값 1.25 V에 가장 가까운 설정과 **온도 변화가 가장 작은 설정은 서로 다릅니다.** 이 프로젝트에서는 온도 민감도를 우선해 CTAT 소자 비율을 골랐습니다.
+
+![VREF 온도 sweep](figures/bgr-vref-sweep.jpg)
+
+**−40 ~ 125 °C 구간에서 VREF 변동 약 3 mV**입니다. 소자 모델 기반 시뮬레이션이며 process corner와 실측 온도계수는 포함하지 않습니다.
+
 ---
 
 ## 2. NMOS Cross-Coupled LC VCO — 10 GHz
@@ -145,6 +157,18 @@ FoM = −L(Δf) + 20·log(f₀ / Δf) − 10·log(P_DC / 1 mW)
 ## 3. Charge-Pump PLL 거동 모델
 
 PFD & Charge Pump → 2차 passive loop filter → VCO → Divider로 구성된 CP-PLL의 거동 모델을 만들어, **루프 파라미터가 응답에 어떻게 작용하는지** 확인했습니다.
+
+```mermaid
+flowchart LR
+ R["50 MHz reference"] --> P["PFD · Charge Pump"]
+ P --> L["Loop filter"]
+ L --> V["VCO"]
+ V --> O["5 GHz 출력"]
+ V --> D["÷ 100"]
+ D --> P
+```
+
+이 모델의 VCO는 위 2절의 트랜지스터 수준 LC VCO와는 별개이며, 둘을 통합해 검증하지는 않았습니다.
 
 | 파라미터 | 기호 | 값 |
 |---|---|---|

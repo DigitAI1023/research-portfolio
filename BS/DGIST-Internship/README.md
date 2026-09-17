@@ -117,16 +117,14 @@ PEX를 반영한 `ring_osc`의 출력 `Out`과, 반영하지 않은 `ring_osc_NO
 
 ![송수신 데이터 비교](figures/r02-intern2024-s10-1.png)
 
-2024-08-22 인턴 발표자료의 예제 기반 OFDM 모델 학습 결과입니다. QAM, CP, FFT·equalization과 복조 데이터 비교를 연결했습니다.
+예제 기반 OFDM 모델 학습 결과입니다. QAM, CP, FFT·equalization과 복조 데이터 비교를 연결했습니다.
 
 ### 2025 동계 Scope·ILA 디버깅
 
 ![Scope와 ILA 진폭 비교](figures/r02-intern2025-s3-0.png)
 
-2025-02-24 발표자료는 scope와 ILA 사이 진폭 불일치를 발견하고 관측 위치·sample index·decode mode를 분석하는 과정을 기록합니다. 해당 기록만으로 문제 해결 완료를 주장하지 않습니다.
-
-출처: `[0822]강가영_CASSP 2024 Summer intern.pptx`, slides 6, 10 및 `20250224_강가영_발표자료.pptx`, slide 3.
+Scope와 ILA 사이 진폭 불일치를 발견하고 관측 위치·sample index·decode mode를 분석했습니다. 해당 기록만으로 문제 해결 완료를 주장하지 않습니다.
 
 ---
 
-[← 학부 과정](../README.md) · [자료 출처](figure-sources.json)
+[← 학부 과정](../README.md)

@@ -121,10 +121,10 @@ Vc ripple은 두 조건이 6.197 mV와 6.268 mV로 거의 같은데 jitter는 16
 |---|---|
 | ![작은 잡음 1MHz eye](figures/p11-3.png) | ![작은 잡음 100MHz eye](figures/p17-3.png) |
 
-VCP=1 V, 관측 구간 5 ns~2 µs의 시뮬레이션입니다. 보고서의 RMS jitter는 각각 3.784 ps와 1.439 ps입니다. 위의 ±50 mV 결과와 비교해 진폭 및 주파수 영향을 함께 확인합니다.
+VCP=1 V, 관측 구간 5 ns~2 µs의 시뮬레이션입니다. RMS jitter는 각각 3.784 ps와 1.439 ps입니다. 위의 ±50 mV 결과와 비교해 진폭 및 주파수 영향을 함께 확인합니다.
 
-출처: `C135001_강가영_stu56_Final Poject.pdf`, pp. 11, 17. 이 페이지의 전압·주파수·jitter는 회로 시뮬레이션 결과입니다.
+이 페이지의 전압·주파수·jitter는 회로 시뮬레이션 결과입니다.
 
 ---
 
-[← 학부 과정](../README.md) · [자료 출처](figure-sources.json)
+[← 학부 과정](../README.md)

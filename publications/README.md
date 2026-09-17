@@ -39,6 +39,13 @@ PAM은 심볼이 연속으로 흐르므로 전이(transition)에서 타이밍을
 
 **부호 1비트만 쓰면 곱셈이 XNOR 하나로 바뀝니다.** 누적기 폭도 23-bit에서 8-bit로 줄어듭니다.
 
+```mermaid
+flowchart LR
+ R["RX sample sign"] --> X["XNOR 비교"]
+ S["Known sequence sign"] --> X
+ X --> A["일치 개수 누적"] --> C["Threshold 비교"] --> P["Frame / CP 시작점 검출"]
+```
+
 동기화 시퀀스로는 **Zadoff-Chu 수열의 실수부를 8-bit로 양자화**해 썼습니다. 주파수 영역에서 크기가 평탄해 검출이 안정적이기 때문입니다.
 
 ### 성능 지표

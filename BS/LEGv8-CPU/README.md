@@ -171,12 +171,12 @@ Sub ALU는 **곱셈 ALU control 신호와 Execution Hazard 신호가 함께 오�
 
 ## 개인 설계·검증 범위
 
-개인 기말보고서 2페이지는 Wallace·Dadda 곱셈기와 RCA·CLA·SARA 조합 설계, testbench 비교, 32×32 근사곱셈기 및 EX단 적용·검증, divider 구현을 담당 내용으로 기록합니다. 최종 Design Compiler 성능 분석은 다른 팀원의 수행으로 명시되어 있어, 위 팀 성능과 개인 담당을 구분합니다.
+Wallace·Dadda 곱셈기와 RCA·CLA·SARA 조합 설계, testbench 비교, 32×32 근사곱셈기 및 EX단 적용·검증, divider 구현을 담당했습니다. 최종 Design Compiler 성능 분석은 다른 팀원이 수행했으므로 위 팀 성능과 개인 담당을 구분합니다.
 
-![개인 보고서 ADD·MUL·forwarding 검증](figures/r02-p17-0.png)
+![ADD·MUL·forwarding 검증](figures/r02-p17-0.png)
 
-개인 보고서 17페이지의 SubALU prototype 검증 파형입니다. 최종 포스터의 high-speed mode 구조와 버전을 구분하며, 모든 곱셈 입력을 exhaustive 검증한 결과로 해석하지 않습니다.
+SubALU prototype 검증 파형입니다. 최종 포스터의 high-speed mode 구조와는 버전이 다르며, 모든 곱셈 입력을 exhaustive 검증한 결과는 아닙니다.
 
 ---
 
-[← 학부 과정](../README.md) · [자료 출처](figure-sources.json)
+[← 학부 과정](../README.md)
